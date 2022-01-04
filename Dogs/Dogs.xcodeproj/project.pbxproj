@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6CCD7748278542A800B92D1B /* HTTPClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD7747278542A800B92D1B /* HTTPClientError.swift */; };
+		6CCD774B2785435400B92D1B /* APIBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD774A2785435400B92D1B /* APIBreed.swift */; };
 		6CEF69592783DCEB00033B1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69582783DCEB00033B1C /* AppDelegate.swift */; };
 		6CEF695B2783DCEB00033B1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF695A2783DCEB00033B1C /* SceneDelegate.swift */; };
 		6CEF69622783DCEC00033B1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CEF69612783DCEC00033B1C /* Assets.xcassets */; };
@@ -21,6 +23,10 @@
 		6CEF699A2783E48600033B1C /* BreedsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69992783E48600033B1C /* BreedsViewModel.swift */; };
 		6CEF699C2783E4AC00033B1C /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF699B2783E4AC00033B1C /* Box.swift */; };
 		6CEF699E2783EBFC00033B1C /* BreedsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF699D2783EBFC00033B1C /* BreedsService.swift */; };
+		6CEF69A12783F22000033B1C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69A02783F22000033B1C /* HTTPClient.swift */; };
+		6CEF69A32783F29F00033B1C /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69A22783F29F00033B1C /* URLSessionHTTPClient.swift */; };
+		6CEF69A52783FA0D00033B1C /* TheDogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69A42783FA0D00033B1C /* TheDogAPI.swift */; };
+		6CEF69AA2783FC6B00033B1C /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69A92783FC6B00033B1C /* URL+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6CCD7747278542A800B92D1B /* HTTPClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientError.swift; sourceTree = "<group>"; };
+		6CCD774A2785435400B92D1B /* APIBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBreed.swift; sourceTree = "<group>"; };
 		6CEF69552783DCEB00033B1C /* Dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CEF69582783DCEB00033B1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CEF695A2783DCEB00033B1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +67,10 @@
 		6CEF69992783E48600033B1C /* BreedsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsViewModel.swift; sourceTree = "<group>"; };
 		6CEF699B2783E4AC00033B1C /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		6CEF699D2783EBFC00033B1C /* BreedsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsService.swift; sourceTree = "<group>"; };
+		6CEF69A02783F22000033B1C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		6CEF69A22783F29F00033B1C /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		6CEF69A42783FA0D00033B1C /* TheDogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDogAPI.swift; sourceTree = "<group>"; };
+		6CEF69A92783FC6B00033B1C /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +98,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6CCD77462785429500B92D1B /* HttpClient */ = {
+			isa = PBXGroup;
+			children = (
+				6CEF69A02783F22000033B1C /* HTTPClient.swift */,
+				6CCD7747278542A800B92D1B /* HTTPClientError.swift */,
+				6CEF69A22783F29F00033B1C /* URLSessionHTTPClient.swift */,
+			);
+			path = HttpClient;
+			sourceTree = "<group>";
+		};
+		6CCD77492785434300B92D1B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6CEF69A42783FA0D00033B1C /* TheDogAPI.swift */,
+				6CCD774A2785435400B92D1B /* APIBreed.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		6CEF694C2783DCEB00033B1C = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +167,8 @@
 		6CEF69882783DD1500033B1C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				6CEF69A82783FC2200033B1C /* Foundation */,
+				6CEF699F2783F1BA00033B1C /* Network */,
 				6CEF69942783E26F00033B1C /* Builders */,
 				6CEF698C2783E13100033B1C /* Models */,
 				6CEF69912783E1F900033B1C /* Breeds */,
@@ -204,6 +237,23 @@
 				6CEF699D2783EBFC00033B1C /* BreedsService.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6CEF699F2783F1BA00033B1C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				6CCD77462785429500B92D1B /* HttpClient */,
+				6CCD77492785434300B92D1B /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		6CEF69A82783FC2200033B1C /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				6CEF69A92783FC6B00033B1C /* URL+Extensions.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,12 +386,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CCD774B2785435400B92D1B /* APIBreed.swift in Sources */,
 				6CEF698E2783E14500033B1C /* Breed.swift in Sources */,
+				6CEF69AA2783FC6B00033B1C /* URL+Extensions.swift in Sources */,
 				6CEF699A2783E48600033B1C /* BreedsViewModel.swift in Sources */,
 				6CEF69932783E21300033B1C /* BreedsView.swift in Sources */,
+				6CEF69A52783FA0D00033B1C /* TheDogAPI.swift in Sources */,
 				6CEF69962783E28300033B1C /* InitialViewBuilder.swift in Sources */,
 				6CEF69592783DCEB00033B1C /* AppDelegate.swift in Sources */,
 				6CEF699C2783E4AC00033B1C /* Box.swift in Sources */,
+				6CEF69A32783F29F00033B1C /* URLSessionHTTPClient.swift in Sources */,
+				6CCD7748278542A800B92D1B /* HTTPClientError.swift in Sources */,
+				6CEF69A12783F22000033B1C /* HTTPClient.swift in Sources */,
 				6CEF695B2783DCEB00033B1C /* SceneDelegate.swift in Sources */,
 				6CEF69902783E16C00033B1C /* Image.swift in Sources */,
 				6CEF699E2783EBFC00033B1C /* BreedsService.swift in Sources */,
