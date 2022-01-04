@@ -99,13 +99,9 @@
 		6CEF69572783DCEB00033B1C /* Dogs */ = {
 			isa = PBXGroup;
 			children = (
-				6CEF69582783DCEB00033B1C /* AppDelegate.swift */,
-				6CEF695A2783DCEB00033B1C /* SceneDelegate.swift */,
-				6CEF695C2783DCEB00033B1C /* ViewController.swift */,
-				6CEF695E2783DCEB00033B1C /* Main.storyboard */,
-				6CEF69612783DCEC00033B1C /* Assets.xcassets */,
-				6CEF69632783DCEC00033B1C /* LaunchScreen.storyboard */,
-				6CEF69662783DCEC00033B1C /* Info.plist */,
+				6CEF698A2783DD2800033B1C /* Application */,
+				6CEF69892783DD1D00033B1C /* Resources */,
+				6CEF69882783DD1500033B1C /* Main */,
 			);
 			path = Dogs;
 			sourceTree = "<group>";
@@ -125,6 +121,34 @@
 				6CEF697B2783DCED00033B1C /* DogsUITestsLaunchTests.swift */,
 			);
 			path = DogsUITests;
+			sourceTree = "<group>";
+		};
+		6CEF69882783DD1500033B1C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6CEF695C2783DCEB00033B1C /* ViewController.swift */,
+				6CEF695E2783DCEB00033B1C /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6CEF69892783DD1D00033B1C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6CEF69612783DCEC00033B1C /* Assets.xcassets */,
+				6CEF69632783DCEC00033B1C /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6CEF698A2783DD2800033B1C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				6CEF69582783DCEB00033B1C /* AppDelegate.swift */,
+				6CEF695A2783DCEB00033B1C /* SceneDelegate.swift */,
+				6CEF69662783DCEC00033B1C /* Info.plist */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,7 +464,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Dogs/Info.plist;
+				INFOPLIST_FILE = Dogs/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -467,7 +491,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Dogs/Info.plist;
+				INFOPLIST_FILE = Dogs/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
