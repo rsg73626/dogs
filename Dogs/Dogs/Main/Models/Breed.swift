@@ -9,5 +9,5 @@ import Foundation
 
 struct Breed {
     let name: String
-    let image: Image
+    let image: URL
 }
