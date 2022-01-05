@@ -17,6 +17,7 @@
 		6CCD777027857CB900B92D1B /* BreedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD776F27857CB900B92D1B /* BreedViewModel.swift */; };
 		6CCD777227857D9800B92D1B /* BreedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD777127857D9800B92D1B /* BreedService.swift */; };
 		6CCD77752785800400B92D1B /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD77742785800400B92D1B /* Image+Extensions.swift */; };
+		6CCD77772785817800B92D1B /* BreedServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD77762785817800B92D1B /* BreedServiceAdapter.swift */; };
 		6CEF69592783DCEB00033B1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69582783DCEB00033B1C /* AppDelegate.swift */; };
 		6CEF695B2783DCEB00033B1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF695A2783DCEB00033B1C /* SceneDelegate.swift */; };
 		6CEF69622783DCEC00033B1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CEF69612783DCEC00033B1C /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 		6CCD776F27857CB900B92D1B /* BreedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedViewModel.swift; sourceTree = "<group>"; };
 		6CCD777127857D9800B92D1B /* BreedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedService.swift; sourceTree = "<group>"; };
 		6CCD77742785800400B92D1B /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
+		6CCD77762785817800B92D1B /* BreedServiceAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedServiceAdapter.swift; sourceTree = "<group>"; };
 		6CEF69552783DCEB00033B1C /* Dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CEF69582783DCEB00033B1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CEF695A2783DCEB00033B1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				6CCD774D2785693E00B92D1B /* BreedsServiceAdapter.swift */,
+				6CCD77762785817800B92D1B /* BreedServiceAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				6CEF69932783E21300033B1C /* BreedsView.swift in Sources */,
 				6CEF69A52783FA0D00033B1C /* TheDogAPI.swift in Sources */,
 				6CCD777227857D9800B92D1B /* BreedService.swift in Sources */,
+				6CCD77772785817800B92D1B /* BreedServiceAdapter.swift in Sources */,
 				6CCD77752785800400B92D1B /* Image+Extensions.swift in Sources */,
 				6CEF69962783E28300033B1C /* InitialViewBuilder.swift in Sources */,
 				6CEF69592783DCEB00033B1C /* AppDelegate.swift in Sources */,
