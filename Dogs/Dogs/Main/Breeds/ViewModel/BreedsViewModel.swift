@@ -9,8 +9,7 @@ import Foundation
 
 final class BreedsViewModel {
 
-    let service: BreedsService
-
+    private let service: BreedsService
     private let errorMessage: String
     private let emptyMessage: String
     private let loadingMessage: String
