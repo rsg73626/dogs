@@ -45,6 +45,19 @@ final class BreedView: UIView {
         setUpViews()
     }
     
+    func configure(viewModel: BreedViewModel) {
+        viewModel.isLoading.bind { [weak self] isLoading in
+            isLoading ? self?.loadingView.startAnimating() : self?.loadingView.stopAnimating()
+        }
+        viewModel.image.bind { [weak self] image in
+            self?.imageView.image = image.toUIImage()
+        }
+        viewModel.name.bind { [weak self] name in
+            self?.nameLabel.text = name
+        }
+        viewModel.bootstrap()
+    }
+    
     private func setUpViews() {
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
