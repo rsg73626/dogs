@@ -13,6 +13,7 @@ final class BreedsViewModel {
 
     private let errorMessage: String
     private let emptyMessage: String
+    private let loadingMessage: String
 
     let options = Box([String]())
     let isLoading = Box(true)
@@ -20,14 +21,18 @@ final class BreedsViewModel {
     let retry = Box((title: "", visible: false))
     let breeds = Box([(name: String, image: Image)]())
 
-    init(service: BreedsService, errorMessage: String, emptyMessage: String) {
+    init(service: BreedsService, errorMessage: String, emptyMessage: String, loadingMessage: String) {
         self.service = service
         self.errorMessage = errorMessage
         self.emptyMessage = emptyMessage
+        self.loadingMessage = loadingMessage
     }
 
     func bootstrap() {
-
+        message.value = loadingMessage
+        Task {
+            _ = try await service.loadBreeds()
+        }
     }
 
     func didSelectOption(at index: Int) {

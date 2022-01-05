@@ -15,7 +15,8 @@ struct BreedsViewBuilder {
         let view = BreedsView()
         let viewModel = BreedsViewModel(service: service,
                                         errorMessage: "BreedsList.errorMessage".localized,
-                                        emptyMessage: "BreedsList.emptyMessage".localized)
+                                        emptyMessage: "BreedsList.emptyMessage".localized,
+                                        loadingMessage: "BreedsList.loadingMessage".localized)
         view.viewModel = viewModel
         return view
     }

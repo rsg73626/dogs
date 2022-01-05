@@ -24,6 +24,7 @@ final class BreedsView: UIViewController {
     lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = .zero
+        label.textAlignment = .center
         return label
     }()
 
