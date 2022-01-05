@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Dogs
+
+  Created by Temporary Account on 05/01/22.
+  
+*/
+
+"BreedsList.errorMessage" = "Something went wrong. \nTry again.";
+"BreedsList.emptyMessage" = "No breeds were found.";
