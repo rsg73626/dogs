@@ -11,9 +11,10 @@ struct BreedsViewBuilder {
     
     private init() { }
     
-    static func build(service: BreedsService) -> BreedsView {
+    static func build(breedsService: BreedsService, breedService: BreedService) -> BreedsView {
         let view = BreedsView()
-        let viewModel = BreedsViewModel(service: service,
+        let viewModel = BreedsViewModel(service: breedsService,
+                                        breedService: breedService,
                                         errorMessage: "BreedsList.errorMessage".localized,
                                         emptyMessage: "BreedsList.emptyMessage".localized,
                                         loadingMessage: "BreedsList.loadingMessage".localized)
