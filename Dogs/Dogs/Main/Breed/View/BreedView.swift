@@ -52,10 +52,10 @@ final class BreedView: UIView {
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
-        addSubview(loadingView)
+        imageView.addSubview(loadingView)
         loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        loadingView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        loadingView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+        loadingView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
         
         addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
