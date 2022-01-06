@@ -6,15 +6,17 @@
 //
 
 import Foundation
+import UIKit
 
 struct BreedsViewBuilder {
     
     private init() { }
     
-    static func build(breedsService: BreedsService, breedService: BreedService) -> BreedsView {
+    static func build(breedsService: BreedsService, breedService: BreedService, availabledWidth: Float) -> BreedsView {
         let view = BreedsView()
         let viewModel = BreedsViewModel(service: breedsService,
                                         breedService: breedService,
+                                        availabledWidth: availabledWidth,
                                         errorMessage: "BreedsList.errorMessage".localized,
                                         emptyMessage: "BreedsList.emptyMessage".localized,
                                         loadingMessage: "BreedsList.loadingMessage".localized)
