@@ -155,6 +155,16 @@
 			path = BreedService;
 			sourceTree = "<group>";
 		};
+		6C6137BB2786891400EA54E9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6CEF69A82783FC2200033B1C /* Foundation */,
+				6CCD774F27856A1B00B92D1B /* ViewModel */,
+				6CCD777327857FEF00B92D1B /* View */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		6CCD77462785429500B92D1B /* HttpClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,13 +193,13 @@
 			path = Adapters;
 			sourceTree = "<group>";
 		};
-		6CCD774F27856A1B00B92D1B /* ViewModelUtils */ = {
+		6CCD774F27856A1B00B92D1B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				6CEF698F2783E16C00033B1C /* Image.swift */,
 				6CEF699B2783E4AC00033B1C /* Box.swift */,
 			);
-			path = ViewModelUtils;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6CCD776A2785768D00B92D1B /* Breed */ = {
@@ -218,12 +228,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		6CCD777327857FEF00B92D1B /* ViewUtils */ = {
+		6CCD777327857FEF00B92D1B /* View */ = {
 			isa = PBXGroup;
 			children = (
 				6CCD77742785800400B92D1B /* Image+Extensions.swift */,
 			);
-			path = ViewUtils;
+			path = View;
 			sourceTree = "<group>";
 		};
 		6CEF694C2783DCEB00033B1C = {
@@ -252,6 +262,10 @@
 				6CEF698A2783DD2800033B1C /* Application */,
 				6CEF69892783DD1D00033B1C /* Resources */,
 				6CEF69882783DD1500033B1C /* Main */,
+				6C6137BB2786891400EA54E9 /* Utils */,
+				6CEF698C2783E13100033B1C /* Models */,
+				6CEF69912783E1F900033B1C /* Breeds */,
+				6CCD776A2785768D00B92D1B /* Breed */,
 			);
 			path = Dogs;
 			sourceTree = "<group>";
@@ -276,16 +290,10 @@
 		6CEF69882783DD1500033B1C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				6CEF69A82783FC2200033B1C /* Foundation */,
 				6CEF699F2783F1BA00033B1C /* Network */,
 				6CEF69942783E26F00033B1C /* Builders */,
 				6CCD774C278568F800B92D1B /* Adapters */,
 				6C6137B027866E6C00EA54E9 /* Compositor */,
-				6CEF698C2783E13100033B1C /* Models */,
-				6CCD774F27856A1B00B92D1B /* ViewModelUtils */,
-				6CCD777327857FEF00B92D1B /* ViewUtils */,
-				6CEF69912783E1F900033B1C /* Breeds */,
-				6CCD776A2785768D00B92D1B /* Breed */,
 			);
 			path = Main;
 			sourceTree = "<group>";
