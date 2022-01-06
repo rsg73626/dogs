@@ -9,8 +9,6 @@ import UIKit
 
 final class BreedView: UIView {
     
-    let nameHeight: CGFloat
-    
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -33,14 +31,15 @@ final class BreedView: UIView {
         return label
     }()
     
-    init(frame: CGRect, nameHeight: CGFloat) {
-        self.nameHeight = nameHeight
+    private var imageHeight: NSLayoutConstraint?
+    private var backgroundHeight: NSLayoutConstraint?
+    
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
     }
     
     required init?(coder: NSCoder) {
-        self.nameHeight = .zero
         super.init(coder: coder)
         setUpViews()
     }
@@ -54,6 +53,12 @@ final class BreedView: UIView {
         }
         viewModel.name.bind { [weak self] name in
             self?.nameLabel.text = name
+        }
+        viewModel.imageHeight.bind { [weak self] height in
+            self?.imageHeight?.constant = CGFloat(height)
+        }
+        viewModel.backgroundHeight.bind { [weak self] height in
+            self?.backgroundHeight?.constant = CGFloat(height)
         }
         viewModel.bootstrap()
     }
@@ -75,7 +80,6 @@ final class BreedView: UIView {
         backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        backgroundView.heightAnchor.constraint(equalToConstant: nameHeight).isActive = true
         imageView.bottomAnchor.constraint(equalTo: backgroundView.topAnchor).isActive = true
         
         backgroundView.addSubview(nameLabel)
@@ -83,6 +87,11 @@ final class BreedView: UIView {
         nameLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 8).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: 8).isActive = true
         nameLabel.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor).isActive = true
+        
+        imageHeight = imageView.heightAnchor.constraint(equalToConstant: .leastNonzeroMagnitude)
+        imageHeight?.isActive = true
+        backgroundHeight = backgroundView.heightAnchor.constraint(equalToConstant: .leastNonzeroMagnitude)
+        backgroundHeight?.isActive = true
     }
     
 }

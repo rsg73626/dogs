@@ -10,4 +10,6 @@ import Foundation
 struct Breed {
     let name: String
     let image: URL
+    let imageWidth: Float
+    let imageHeigh: Float
 }

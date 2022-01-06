@@ -33,8 +33,8 @@ final class BreedsView: UIViewController {
         return button
     }()
     
-    lazy var list: UITableView = {
-        UITableView(frame: .zero, style: .plain)
+    lazy var list: BreedsListView = {
+        BreedsListView(frame: view.frame)
     }()
 
     init() {
@@ -76,6 +76,12 @@ final class BreedsView: UIViewController {
 
         retryButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         retryButton.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 32).isActive = true
+        
+        view.addSubview(list)
+        list.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        list.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        list.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        list.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
     private func bind() {
@@ -96,8 +102,8 @@ final class BreedsView: UIViewController {
             self?.retryButton.setTitle(title, for: .normal)
             self?.retryButton.isHidden = visible == false
         }
-        viewModel.breeds.bind { [weak self] _ in
-            self?.list.reloadData()
+        viewModel.breeds.bind { [weak self] viewModels in
+            self?.list.configure(viewModels: viewModels)
         }
     }
 
