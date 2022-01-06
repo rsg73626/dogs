@@ -82,6 +82,7 @@ final class BreedsView: UIViewController {
         list.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         list.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         list.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        list.tableView.delegate = self
     }
 
     private func bind() {
@@ -108,9 +109,26 @@ final class BreedsView: UIViewController {
         viewModel.hideList.bind { [weak self] isHidden in
             self?.list.isHidden = isHidden
         }
-        viewModel.hideGrid.bind { [weak self] isHidden in
+        viewModel.hideGrid.bind { /*[weak self]*/ isHidden in
             print(isHidden)
+        }
+        viewModel.isPaging.bind { [weak self] paging in
+            self?.list.loadingContainer.isHidden = paging == false
         }
     }
 
 }
+
+extension BreedsView: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        viewModel?.willShowBreed(at: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.didSelectBreed(at: indexPath.row)
+    }
+    
+}
+
+

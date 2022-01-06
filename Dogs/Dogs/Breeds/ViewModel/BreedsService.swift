@@ -8,5 +8,5 @@
 import Foundation
 
 protocol BreedsService {
-    func loadBreeds(completion: @escaping ([Breed]?) -> Void)
+    func loadBreeds(page: Int, completion: @escaping ([Breed]?) -> Void)
 }

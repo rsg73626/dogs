@@ -10,7 +10,7 @@ import Foundation
 struct APIBreed: Decodable {
     let id: Int
     let name: String
-    let temperament: String
+    let temperament: String?
     let life_span: String
     let alt_names: String?
     let wikipedia_url: URL?

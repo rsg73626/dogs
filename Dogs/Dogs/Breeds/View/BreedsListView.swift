@@ -18,6 +18,15 @@ class BreedsListView: UIView {
         return tableView
     }()
     
+    lazy var loadingView: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        return activityIndicator
+    }()
+    
+    lazy var loadingContainer: UIView = UIView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
@@ -40,12 +49,21 @@ class BreedsListView: UIView {
         tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
+        
+        tableView.tableFooterView = loadingContainer
+        loadingContainer.frame.size = CGSize(width: tableView.frame.width, height: 64)
+        
+        loadingContainer.addSubview(loadingView)
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.centerXAnchor.constraint(equalTo: loadingContainer.centerXAnchor).isActive = true
+        loadingView.centerYAnchor.constraint(equalTo: loadingContainer.centerYAnchor).isActive = true
     }
     
 }
 
-extension BreedsListView: UITableViewDataSource {
+extension BreedsListView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModels.count

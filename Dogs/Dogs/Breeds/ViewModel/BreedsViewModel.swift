@@ -15,9 +15,13 @@ final class BreedsViewModel {
     private static var errorMessage: String = ""
     private static var emptyMessage: String = ""
     private static var loadingMessage: String = ""
+    private var paging = false
+    private var didEndPaging = false
+    private var currentPage: Int = 0
 
     let options = Box([String]())
     let isLoading = Box(true)
+    let isPaging = Box(true)
     let message = Box("")
     let retry = Box((title: "", visible: false))
     let breeds = Box([BreedViewModel]())
@@ -36,7 +40,7 @@ final class BreedsViewModel {
     func bootstrap() {
         isLoading.value = true
         message.value = BreedsViewModel.loadingMessage
-        service.loadBreeds { [weak self] breeds in
+        service.loadBreeds(page: currentPage) { [weak self] breeds in
             guard let self = self else { return }
             self.isLoading.value = false
             if let breeds = breeds {
@@ -56,13 +60,37 @@ final class BreedsViewModel {
     }
 
     func willShowBreed(at index: Int) {
-
+        if breeds.value.isEmpty == false, index == breeds.value.count - 1 {
+            getNextPage()
+        }
+    }
+    
+    private func getNextPage() {
+        guard paging == false, didEndPaging == false else { return }
+        isPaging.value = true
+        service.loadBreeds(page: currentPage) { [weak self] breeds in
+            self?.paging = false
+            self?.isPaging.value = false
+            if let breeds = breeds {
+                if breeds.isEmpty {
+                    self?.didEndPaging = true
+                } else {
+                    self?.didGetPage(breeds)
+                }
+            }
+        }
+    }
+    
+    private func didGetPage(_ breeds: [Breed]) {
+        currentPage += 1
+        self.breeds.value = self.breeds.value + breeds.toViewModel(self.breedService, availabledWidth: self.availabledWidth)
     }
     
     private func didGet(_ breeds: [Breed]) {
         if breeds.isEmpty {
             message.value = BreedsViewModel.emptyMessage
         } else {
+            currentPage += 1
             message.value = ""
             self.breeds.value = self.breeds.value + breeds.toViewModel(self.breedService, availabledWidth: self.availabledWidth)
             hideList.value = false

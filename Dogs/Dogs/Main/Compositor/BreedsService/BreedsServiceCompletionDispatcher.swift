@@ -16,8 +16,8 @@ final class BreedsServiceCompletionDispatcher: BreedsServiceCompositor {
         self.queue = queue
     }
     
-    func loadBreeds(completion: @escaping ([Breed]?) -> Void) {
-        composed?.loadBreeds { [weak self] result in
+    func loadBreeds(page: Int, completion: @escaping ([Breed]?) -> Void) {
+        composed?.loadBreeds(page: page) { [weak self] result in
             self?.queue.async {
                 completion(result)
             }
