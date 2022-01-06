@@ -12,7 +12,7 @@ class BreedsListView: UIView {
     var viewModels = [BreedViewModel]()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: frame, style: .plain)
+        let tableView = UITableView(frame: frame, style: .insetGrouped)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         return tableView
@@ -65,13 +65,17 @@ class BreedsListView: UIView {
 
 extension BreedsListView: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         viewModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as? BreedTableViewCell
-        cell?.configure(viewModel: viewModels[indexPath.row])
+        cell?.configure(viewModel: viewModels[indexPath.section])
         return cell ?? UITableViewCell()
     }
     

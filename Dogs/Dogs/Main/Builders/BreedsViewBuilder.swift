@@ -17,6 +17,7 @@ struct BreedsViewBuilder {
         let viewModel = BreedsViewModel(service: breedsService,
                                         breedService: breedService,
                                         availabledWidth: availabledWidth,
+                                        title: "BreedsList.title".localized,
                                         errorMessage: "BreedsList.errorMessage".localized,
                                         emptyMessage: "BreedsList.emptyMessage".localized,
                                         loadingMessage: "BreedsList.loadingMessage".localized)

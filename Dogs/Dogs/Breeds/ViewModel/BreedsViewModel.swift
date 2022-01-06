@@ -12,6 +12,7 @@ final class BreedsViewModel {
     private let service: BreedsService
     private let breedService: BreedService
     private let availabledWidth: Float
+    private static var title: String = ""
     private static var errorMessage: String = ""
     private static var emptyMessage: String = ""
     private static var loadingMessage: String = ""
@@ -19,6 +20,7 @@ final class BreedsViewModel {
     private var didEndPaging = false
     private var currentPage: Int = 0
 
+    let title = Box("")
     let options = Box([String]())
     let isLoading = Box(true)
     let isPaging = Box(true)
@@ -28,16 +30,18 @@ final class BreedsViewModel {
     let hideList = Box(true)
     let hideGrid = Box(true)
 
-    init(service: BreedsService, breedService: BreedService, availabledWidth: Float, errorMessage: String, emptyMessage: String, loadingMessage: String) {
+    init(service: BreedsService, breedService: BreedService, availabledWidth: Float, title: String, errorMessage: String, emptyMessage: String, loadingMessage: String) {
         self.service = service
         self.breedService = breedService
         self.availabledWidth = availabledWidth
+        BreedsViewModel.title = title
         BreedsViewModel.errorMessage = errorMessage
         BreedsViewModel.emptyMessage = emptyMessage
         BreedsViewModel.loadingMessage = loadingMessage
     }
 
     func bootstrap() {
+        title.value = BreedsViewModel.title
         isLoading.value = true
         message.value = BreedsViewModel.loadingMessage
         service.loadBreeds(page: currentPage) { [weak self] breeds in

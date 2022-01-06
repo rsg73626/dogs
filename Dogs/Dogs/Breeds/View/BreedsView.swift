@@ -58,8 +58,7 @@ final class BreedsView: UIViewController {
     }
 
     private func setUpViews() {
-        view.backgroundColor = .white
-        navigationItem.titleView = toggler
+        view.backgroundColor = .systemBackground
         [messageLabel, loading, retryButton, list].forEach { [weak self] v in
             self?.view.addSubview(v)
             v.translatesAutoresizingMaskIntoConstraints = false
@@ -87,6 +86,9 @@ final class BreedsView: UIViewController {
 
     private func bind() {
         guard let viewModel = self.viewModel else { return }
+        viewModel.title.bind { [weak self] title in
+            self?.navigationItem.title = title
+        }
         viewModel.options.bind { [weak self] options in
             self?.toggler.removeAllSegments()
             for option in options.enumerated() {
@@ -122,11 +124,11 @@ final class BreedsView: UIViewController {
 extension BreedsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        viewModel?.willShowBreed(at: indexPath.row)
+        viewModel?.willShowBreed(at: indexPath.section)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.didSelectBreed(at: indexPath.row)
+        viewModel?.didSelectBreed(at: indexPath.section)
     }
     
 }

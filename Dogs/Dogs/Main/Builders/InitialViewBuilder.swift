@@ -22,6 +22,12 @@ struct InitialViewBuilder {
         let breedServiceDispatcher = BreedServiceCompletionDispatcher()
         breedServiceDispatcher.composed = breedService
         let view = BreedsViewBuilder.build(breedsService: dispatcher, breedService: breedServiceDispatcher, availabledWidth: Float(screenSize.width))
-        return UINavigationController(rootViewController: view)
+        let nav = UINavigationController(rootViewController: view)
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named: "AccentColor")
+        nav.navigationBar.standardAppearance = appearance;
+        nav.navigationBar.scrollEdgeAppearance = nav.navigationBar.standardAppearance
+        return nav
     }
 }
