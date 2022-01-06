@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C2506AE278655FA009C21EA /* BreedsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2506AD278655FA009C21EA /* BreedsListView.swift */; };
+		6C6137AF2786583C00EA54E9 /* BreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137AE2786583C00EA54E9 /* BreedTableViewCell.swift */; };
+		6C6137B327866E8300EA54E9 /* BreedsServiceCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B227866E8300EA54E9 /* BreedsServiceCompositor.swift */; };
+		6C6137B527866EAC00EA54E9 /* BreedsServiceCompletionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B427866EAC00EA54E9 /* BreedsServiceCompletionDispatcher.swift */; };
+		6C6137B82786729000EA54E9 /* BreedServiceCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B72786729000EA54E9 /* BreedServiceCompositor.swift */; };
+		6C6137BA278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B9278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift */; };
 		6CCD7748278542A800B92D1B /* HTTPClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD7747278542A800B92D1B /* HTTPClientError.swift */; };
 		6CCD774B2785435400B92D1B /* APIBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD774A2785435400B92D1B /* APIBreed.swift */; };
 		6CCD774E2785693E00B92D1B /* BreedsServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD774D2785693E00B92D1B /* BreedsServiceAdapter.swift */; };
@@ -56,6 +62,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C2506AD278655FA009C21EA /* BreedsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListView.swift; sourceTree = "<group>"; };
+		6C6137AE2786583C00EA54E9 /* BreedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedTableViewCell.swift; sourceTree = "<group>"; };
+		6C6137B227866E8300EA54E9 /* BreedsServiceCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsServiceCompositor.swift; sourceTree = "<group>"; };
+		6C6137B427866EAC00EA54E9 /* BreedsServiceCompletionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsServiceCompletionDispatcher.swift; sourceTree = "<group>"; };
+		6C6137B72786729000EA54E9 /* BreedServiceCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedServiceCompositor.swift; sourceTree = "<group>"; };
+		6C6137B9278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedServiceCompletionDispatcher.swift; sourceTree = "<group>"; };
 		6CCD7747278542A800B92D1B /* HTTPClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientError.swift; sourceTree = "<group>"; };
 		6CCD774A2785435400B92D1B /* APIBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBreed.swift; sourceTree = "<group>"; };
 		6CCD774D2785693E00B92D1B /* BreedsServiceAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsServiceAdapter.swift; sourceTree = "<group>"; };
@@ -116,6 +128,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C6137B027866E6C00EA54E9 /* Compositor */ = {
+			isa = PBXGroup;
+			children = (
+				6C6137B127866E7600EA54E9 /* BreedsService */,
+				6C6137B62786727D00EA54E9 /* BreedService */,
+			);
+			path = Compositor;
+			sourceTree = "<group>";
+		};
+		6C6137B127866E7600EA54E9 /* BreedsService */ = {
+			isa = PBXGroup;
+			children = (
+				6C6137B227866E8300EA54E9 /* BreedsServiceCompositor.swift */,
+				6C6137B427866EAC00EA54E9 /* BreedsServiceCompletionDispatcher.swift */,
+			);
+			path = BreedsService;
+			sourceTree = "<group>";
+		};
+		6C6137B62786727D00EA54E9 /* BreedService */ = {
+			isa = PBXGroup;
+			children = (
+				6C6137B72786729000EA54E9 /* BreedServiceCompositor.swift */,
+				6C6137B9278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift */,
+			);
+			path = BreedService;
+			sourceTree = "<group>";
+		};
 		6CCD77462785429500B92D1B /* HttpClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +280,7 @@
 				6CEF699F2783F1BA00033B1C /* Network */,
 				6CEF69942783E26F00033B1C /* Builders */,
 				6CCD774C278568F800B92D1B /* Adapters */,
+				6C6137B027866E6C00EA54E9 /* Compositor */,
 				6CEF698C2783E13100033B1C /* Models */,
 				6CCD774F27856A1B00B92D1B /* ViewModelUtils */,
 				6CCD777327857FEF00B92D1B /* ViewUtils */,
@@ -300,6 +340,8 @@
 			isa = PBXGroup;
 			children = (
 				6CEF69922783E21300033B1C /* BreedsView.swift */,
+				6C2506AD278655FA009C21EA /* BreedsListView.swift */,
+				6C6137AE2786583C00EA54E9 /* BreedTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -462,6 +504,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C6137B527866EAC00EA54E9 /* BreedsServiceCompletionDispatcher.swift in Sources */,
+				6C6137AF2786583C00EA54E9 /* BreedTableViewCell.swift in Sources */,
 				6CCD774B2785435400B92D1B /* APIBreed.swift in Sources */,
 				6CEF698E2783E14500033B1C /* Breed.swift in Sources */,
 				6CEF69AA2783FC6B00033B1C /* URL+Extensions.swift in Sources */,
@@ -469,7 +513,9 @@
 				6CCD776927856FE900B92D1B /* String+Extensions.swift in Sources */,
 				6CCD777027857CB900B92D1B /* BreedViewModel.swift in Sources */,
 				6CEF69932783E21300033B1C /* BreedsView.swift in Sources */,
+				6C6137B82786729000EA54E9 /* BreedServiceCompositor.swift in Sources */,
 				6CEF69A52783FA0D00033B1C /* TheDogAPI.swift in Sources */,
+				6C6137BA278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift in Sources */,
 				6CCD777227857D9800B92D1B /* BreedService.swift in Sources */,
 				6CCD77772785817800B92D1B /* BreedServiceAdapter.swift in Sources */,
 				6CCD77752785800400B92D1B /* Image+Extensions.swift in Sources */,
@@ -478,9 +524,11 @@
 				6CEF699C2783E4AC00033B1C /* Box.swift in Sources */,
 				6CEF69A32783F29F00033B1C /* URLSessionHTTPClient.swift in Sources */,
 				6CCD7748278542A800B92D1B /* HTTPClientError.swift in Sources */,
+				6C6137B327866E8300EA54E9 /* BreedsServiceCompositor.swift in Sources */,
 				6CCD775127856ACF00B92D1B /* BreedsViewBuilder.swift in Sources */,
 				6CEF69A12783F22000033B1C /* HTTPClient.swift in Sources */,
 				6CCD774E2785693E00B92D1B /* BreedsServiceAdapter.swift in Sources */,
+				6C2506AE278655FA009C21EA /* BreedsListView.swift in Sources */,
 				6CEF695B2783DCEB00033B1C /* SceneDelegate.swift in Sources */,
 				6CEF69902783E16C00033B1C /* Image.swift in Sources */,
 				6CCD776D278576C300B92D1B /* BreedView.swift in Sources */,

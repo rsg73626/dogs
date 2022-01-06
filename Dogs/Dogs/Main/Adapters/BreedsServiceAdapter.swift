@@ -15,15 +15,17 @@ final class BreedsServiceAdapter: BreedsService {
         self.api = api
     }
     
-    func loadBreeds() async throws -> [Breed] {
-        try await api.readBreeds(page: 1, size: 10).toModel()
+    func loadBreeds(completion: @escaping ([Breed]?) -> Void) {
+        Task.detached { [weak self] in
+            completion(try? await self?.api.readBreeds(page: 1, size: 10).toModel())
+        }
     }
 }
 
 private extension Array where Element == APIBreed {
     
     func toModel() -> [Breed] {
-        map { Breed(name: $0.name, image: $0.image.url) }
+        map { Breed(name: $0.name, image: $0.image.url, imageWidth: $0.image.width, imageHeigh: $0.image.height) }
     }
     
 }

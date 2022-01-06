@@ -11,9 +11,10 @@ final class BreedsViewModel {
 
     private let service: BreedsService
     private let breedService: BreedService
-    private let errorMessage: String
-    private let emptyMessage: String
-    private let loadingMessage: String
+    private let availabledWidth: Float
+    private static var errorMessage: String = ""
+    private static var emptyMessage: String = ""
+    private static var loadingMessage: String = ""
 
     let options = Box([String]())
     let isLoading = Box(true)
@@ -21,22 +22,31 @@ final class BreedsViewModel {
     let retry = Box((title: "", visible: false))
     let breeds = Box([BreedViewModel]())
 
-    init(service: BreedsService, breedService: BreedService, errorMessage: String, emptyMessage: String, loadingMessage: String) {
+    init(service: BreedsService, breedService: BreedService, availabledWidth: Float, errorMessage: String, emptyMessage: String, loadingMessage: String) {
         self.service = service
         self.breedService = breedService
-        self.errorMessage = errorMessage
-        self.emptyMessage = emptyMessage
-        self.loadingMessage = loadingMessage
+        self.availabledWidth = availabledWidth
+        BreedsViewModel.errorMessage = errorMessage
+        BreedsViewModel.emptyMessage = emptyMessage
+        BreedsViewModel.loadingMessage = loadingMessage
     }
 
     func bootstrap() {
-        message.value = loadingMessage
-        Task {
-            let breeds = try await service.loadBreeds()
-            isLoading.value = false
-            message.value = ""
-            let breedService = self.breedService
-            self.breeds.value = breeds.map { BreedViewModel(breed: $0, service: breedService) }
+        isLoading.value = true
+        message.value = BreedsViewModel.loadingMessage
+        service.loadBreeds { [weak self] breeds in
+            guard let self = self else { return }
+            self.isLoading.value = false
+            if let breeds = breeds {
+                if breeds.isEmpty {
+                    self.message.value = BreedsViewModel.emptyMessage
+                } else {
+                    self.message.value = ""
+                    self.breeds.value = self.breeds.value + breeds.toViewModel(self.breedService, availabledWidth: self.availabledWidth)
+                }
+            } else {
+                self.message.value = BreedsViewModel.errorMessage
+            }
         }
     }
 
@@ -52,4 +62,11 @@ final class BreedsViewModel {
 
     }
 
+}
+
+private extension Array where Element == Breed {
+
+    func toViewModel(_ service: BreedService, availabledWidth: Float) -> [BreedViewModel] {
+        map { BreedViewModel(breed: $0, service: service, availableWidth: availabledWidth) }
+    }
 }

@@ -15,7 +15,9 @@ final class BreedServiceAdapter: BreedService {
         self.httpClient = httpClient
     }
     
-    func downloadImage(formURL url: URL) async -> Data? {
-        (try? await httpClient.fetchData(url: url, headers: [:]))?.data
+    func downloadImage(formURL url: URL, completion: @escaping (Data?) -> Void) {
+        Task.detached { [weak self] in
+            completion((try? await self?.httpClient.fetchData(url: url, headers: [:]))?.data)
+        }
     }
 }

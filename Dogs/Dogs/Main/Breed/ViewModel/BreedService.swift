@@ -8,5 +8,5 @@
 import Foundation
 
 protocol BreedService {
-    func downloadImage(formURL url: URL) async -> Data?
+    func downloadImage(formURL url: URL, completion: @escaping (Data?) -> Void)
 }
