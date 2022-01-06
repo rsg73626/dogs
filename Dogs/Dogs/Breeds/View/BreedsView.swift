@@ -105,6 +105,12 @@ final class BreedsView: UIViewController {
         viewModel.breeds.bind { [weak self] viewModels in
             self?.list.configure(viewModels: viewModels)
         }
+        viewModel.hideList.bind { [weak self] isHidden in
+            self?.list.isHidden = isHidden
+        }
+        viewModel.hideGrid.bind { [weak self] isHidden in
+            print(isHidden)
+        }
     }
 
 }

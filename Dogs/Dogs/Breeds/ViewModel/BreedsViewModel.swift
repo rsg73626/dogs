@@ -21,6 +21,8 @@ final class BreedsViewModel {
     let message = Box("")
     let retry = Box((title: "", visible: false))
     let breeds = Box([BreedViewModel]())
+    let hideList = Box(true)
+    let hideGrid = Box(true)
 
     init(service: BreedsService, breedService: BreedService, availabledWidth: Float, errorMessage: String, emptyMessage: String, loadingMessage: String) {
         self.service = service
@@ -38,12 +40,7 @@ final class BreedsViewModel {
             guard let self = self else { return }
             self.isLoading.value = false
             if let breeds = breeds {
-                if breeds.isEmpty {
-                    self.message.value = BreedsViewModel.emptyMessage
-                } else {
-                    self.message.value = ""
-                    self.breeds.value = self.breeds.value + breeds.toViewModel(self.breedService, availabledWidth: self.availabledWidth)
-                }
+                self.didGet(breeds)
             } else {
                 self.message.value = BreedsViewModel.errorMessage
             }
@@ -60,6 +57,16 @@ final class BreedsViewModel {
 
     func willShowBreed(at index: Int) {
 
+    }
+    
+    private func didGet(_ breeds: [Breed]) {
+        if breeds.isEmpty {
+            message.value = BreedsViewModel.emptyMessage
+        } else {
+            message.value = ""
+            self.breeds.value = self.breeds.value + breeds.toViewModel(self.breedService, availabledWidth: self.availabledWidth)
+            hideList.value = false
+        }
     }
 
 }
