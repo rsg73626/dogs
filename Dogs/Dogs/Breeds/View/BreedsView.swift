@@ -11,8 +11,18 @@ final class BreedsView: UIViewController {
 
     var viewModel: BreedsViewModel?
     
-    lazy var toggler: UISegmentedControl = {
-        UISegmentedControl()
+    lazy var listLayout: UIBarButtonItem = {
+        UIBarButtonItem(image: UIImage(systemName: ""),
+                        style: .plain,
+                        target: self,
+                        action: #selector(didPressListLayout))
+    }()
+    
+    lazy var gridLayout: UIBarButtonItem = {
+        UIBarButtonItem(image: UIImage(systemName: ""),
+                        style: .plain,
+                        target: self,
+                        action: #selector(didPressGridLayout))
     }()
     
     lazy var loading: UIActivityIndicatorView = {
@@ -53,22 +63,26 @@ final class BreedsView: UIViewController {
         viewModel?.bootstrap()
     }
     
+    @objc private func didPressListLayout() {
+        viewModel?.didSelectListLayout()
+    }
+    
+    @objc private func didPressGridLayout() {
+        viewModel?.didSelectGridLayout()
+    }
+    
     @objc private func didPressTryAgain() {
         viewModel?.bootstrap()
     }
-    
-    @objc private func didSelectOption() {
-        viewModel?.didSelectOption(at: toggler.selectedSegmentIndex)
-    }
 
     private func setUpViews() {
+        navigationItem.leftBarButtonItems = [listLayout, gridLayout]
+        
         view.backgroundColor = .systemBackground
         [messageLabel, loading, retryButton, list].forEach { [weak self] v in
             self?.view.addSubview(v)
             v.translatesAutoresizingMaskIntoConstraints = false
         }
-
-        toggler.addTarget(self, action: #selector(didSelectOption), for: .valueChanged)
 
         messageLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         messageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
@@ -93,14 +107,12 @@ final class BreedsView: UIViewController {
 
     private func bind() {
         guard let viewModel = self.viewModel else { return }
+        viewModel.layoutSwitcherButtons.bind { [weak self] list, grid in
+            self?.listLayout.image = list.toUIImage()
+            self?.gridLayout.image = grid.toUIImage()
+        }
         viewModel.title.bind { [weak self] title in
             self?.navigationItem.title = title
-        }
-        viewModel.options.bind { [weak self] options in
-            self?.toggler.removeAllSegments()
-            for option in options.enumerated() {
-                self?.toggler.insertSegment(withTitle: option.element, at: option.offset, animated: false)
-            }
         }
         viewModel.isLoading.bind { [weak self] isLoading in
             isLoading ? self?.loading.startAnimating() : self?.loading.stopAnimating()
@@ -139,5 +151,3 @@ extension BreedsView: UITableViewDelegate {
     }
     
 }
-
-

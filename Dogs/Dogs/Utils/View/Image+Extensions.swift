@@ -17,6 +17,9 @@ extension Image {
         case let .named(name):
             return UIImage(named: name)
             
+        case let .system(name):
+            return UIImage(systemName: name)
+            
         }
     }
     

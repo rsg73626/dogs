@@ -12,6 +12,10 @@ final class BreedsViewModel {
     private let service: BreedsService
     private let breedService: BreedService
     private let availabledWidth: Float
+    static var listLayout = "rectangle.grid.1x2"
+    static var listLayoutFilled = "rectangle.grid.1x2.fill"
+    static var gridLayout = "square.grid.2x2"
+    static var gridLayoutFilled = "square.grid.2x2.fill"
     private static var title: String = ""
     private static var errorMessage: String = ""
     private static var emptyMessage: String = ""
@@ -21,8 +25,8 @@ final class BreedsViewModel {
     private var didEndPaging = false
     private var currentPage: Int = 0
 
+    let layoutSwitcherButtons = Box((list: Image.system(name: ""), grid: Image.system(name: "")))
     let title = Box("")
-    let options = Box([String]())
     let isLoading = Box(true)
     let isPaging = Box(true)
     let message = Box("")
@@ -50,6 +54,7 @@ final class BreedsViewModel {
     }
 
     func bootstrap() {
+        layoutSwitcherButtons.value = (.system(name: BreedsViewModel.listLayout), .system(name: BreedsViewModel.gridLayout))
         title.value = BreedsViewModel.title
         isLoading.value = true
         message.value = BreedsViewModel.loadingMessage
@@ -66,10 +71,6 @@ final class BreedsViewModel {
         }
     }
 
-    func didSelectOption(at index: Int) {
-
-    }
-
     func didSelectBreed(at index: Int) {
 
     }
@@ -78,6 +79,14 @@ final class BreedsViewModel {
         if breeds.value.isEmpty == false, index == breeds.value.count - 1 {
             getNextPage()
         }
+    }
+    
+    func didSelectListLayout() {
+        layoutSwitcherButtons.value = (.system(name: BreedsViewModel.listLayoutFilled), .system(name: BreedsViewModel.gridLayout))
+    }
+    
+    func didSelectGridLayout() {
+        layoutSwitcherButtons.value = (.system(name: BreedsViewModel.listLayout), .system(name: BreedsViewModel.gridLayoutFilled))
     }
     
     private func getNextPage() {

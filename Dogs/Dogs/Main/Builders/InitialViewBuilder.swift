@@ -25,9 +25,10 @@ struct InitialViewBuilder {
         let nav = UINavigationController(rootViewController: view)
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: "AccentColor")
+        appearance.backgroundColor = .systemGray6
         nav.navigationBar.standardAppearance = appearance;
         nav.navigationBar.scrollEdgeAppearance = nav.navigationBar.standardAppearance
+        
         return nav
     }
 }

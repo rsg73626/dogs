@@ -10,4 +10,5 @@ import Foundation
 enum Image {
     case named(name: String)
     case data(data: Data)
+    case system(name: String)
 }
