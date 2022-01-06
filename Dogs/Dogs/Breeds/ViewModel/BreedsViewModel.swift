@@ -54,7 +54,7 @@ final class BreedsViewModel {
     }
 
     func bootstrap() {
-        layoutSwitcherButtons.value = (.system(name: BreedsViewModel.listLayout), .system(name: BreedsViewModel.gridLayout))
+        layoutSwitcherButtons.value = (.system(name: BreedsViewModel.listLayoutFilled), .system(name: BreedsViewModel.gridLayout))
         title.value = BreedsViewModel.title
         isLoading.value = true
         message.value = BreedsViewModel.loadingMessage
@@ -83,10 +83,14 @@ final class BreedsViewModel {
     
     func didSelectListLayout() {
         layoutSwitcherButtons.value = (.system(name: BreedsViewModel.listLayoutFilled), .system(name: BreedsViewModel.gridLayout))
+        hideGrid.value = true
+        hideList.value = false
     }
     
     func didSelectGridLayout() {
         layoutSwitcherButtons.value = (.system(name: BreedsViewModel.listLayout), .system(name: BreedsViewModel.gridLayoutFilled))
+        hideList.value = true
+        hideGrid.value = false
     }
     
     private func getNextPage() {

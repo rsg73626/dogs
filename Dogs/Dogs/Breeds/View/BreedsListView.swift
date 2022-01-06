@@ -49,7 +49,6 @@ class BreedsListView: UIView {
         tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         tableView.dataSource = self
-        tableView.delegate = self
         tableView.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
         
         tableView.tableFooterView = loadingContainer
@@ -63,7 +62,7 @@ class BreedsListView: UIView {
     
 }
 
-extension BreedsListView: UITableViewDataSource, UITableViewDelegate {
+extension BreedsListView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModels.count

@@ -46,6 +46,10 @@ final class BreedsView: UIViewController {
     lazy var list: BreedsListView = {
         BreedsListView(frame: view.frame)
     }()
+    
+    lazy var grid: BreedsGridView = {
+        BreedsGridView(frame: view.frame)
+    }()
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -103,6 +107,12 @@ final class BreedsView: UIViewController {
         list.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         list.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         list.tableView.delegate = self
+        
+        view.addSubview(grid)
+        grid.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        grid.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        grid.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        grid.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
     private func bind() {
@@ -126,6 +136,7 @@ final class BreedsView: UIViewController {
         }
         viewModel.breeds.bind { [weak self] viewModels in
             self?.list.configure(viewModels: viewModels)
+            self?.grid.configure(viewModels: viewModels)
         }
         viewModel.hideList.bind { [weak self] isHidden in
             self?.list.isHidden = isHidden
@@ -135,6 +146,12 @@ final class BreedsView: UIViewController {
         }
         viewModel.isPaging.bind { [weak self] paging in
             self?.list.loadingContainer.isHidden = paging == false
+        }
+        viewModel.hideList.bind { [weak self] isHidden in
+            self?.list.isHidden = isHidden
+        }
+        viewModel.hideGrid.bind { [weak self] isHidden in
+            self?.grid.isHidden = isHidden
         }
     }
 
