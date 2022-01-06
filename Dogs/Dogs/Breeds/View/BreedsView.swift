@@ -53,6 +53,10 @@ final class BreedsView: UIViewController {
         viewModel?.bootstrap()
     }
     
+    @objc private func didPressTryAgain() {
+        viewModel?.bootstrap()
+    }
+    
     @objc private func didSelectOption() {
         viewModel?.didSelectOption(at: toggler.selectedSegmentIndex)
     }
@@ -74,7 +78,10 @@ final class BreedsView: UIViewController {
         loading.bottomAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -32).isActive = true
 
         retryButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        retryButton.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 32).isActive = true
+        retryButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 32).isActive = true
+        retryButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        retryButton.addTarget(self, action: #selector(didPressTryAgain), for: .touchUpInside)
+        retryButton.setTitleColor(.systemBlue, for: .normal)
         
         view.addSubview(list)
         list.topAnchor.constraint(equalTo: view.topAnchor).isActive = true

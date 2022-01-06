@@ -10,3 +10,4 @@
 "BreedsList.errorMessage" = "Something went wrong. \nTry again.";
 "BreedsList.emptyMessage" = "No breeds were found.";
 "BreedsList.loadingMessage" = "Loading...";
+"BreedsList.retry" = "Tray again";

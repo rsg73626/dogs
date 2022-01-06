@@ -16,6 +16,7 @@ final class BreedsViewModel {
     private static var errorMessage: String = ""
     private static var emptyMessage: String = ""
     private static var loadingMessage: String = ""
+    private static var tryAgainButtonTitle: String = ""
     private var paging = false
     private var didEndPaging = false
     private var currentPage: Int = 0
@@ -30,7 +31,14 @@ final class BreedsViewModel {
     let hideList = Box(true)
     let hideGrid = Box(true)
 
-    init(service: BreedsService, breedService: BreedService, availabledWidth: Float, title: String, errorMessage: String, emptyMessage: String, loadingMessage: String) {
+    init(service: BreedsService,
+         breedService: BreedService,
+         availabledWidth: Float,
+         title: String,
+         errorMessage: String,
+         emptyMessage: String,
+         loadingMessage: String,
+         tryAgainButtonTitle: String) {
         self.service = service
         self.breedService = breedService
         self.availabledWidth = availabledWidth
@@ -38,12 +46,14 @@ final class BreedsViewModel {
         BreedsViewModel.errorMessage = errorMessage
         BreedsViewModel.emptyMessage = emptyMessage
         BreedsViewModel.loadingMessage = loadingMessage
+        BreedsViewModel.tryAgainButtonTitle = tryAgainButtonTitle
     }
 
     func bootstrap() {
         title.value = BreedsViewModel.title
         isLoading.value = true
         message.value = BreedsViewModel.loadingMessage
+        retry.value = (BreedsViewModel.tryAgainButtonTitle, false)
         service.loadBreeds(page: currentPage) { [weak self] breeds in
             guard let self = self else { return }
             self.isLoading.value = false
@@ -51,6 +61,7 @@ final class BreedsViewModel {
                 self.didGet(breeds)
             } else {
                 self.message.value = BreedsViewModel.errorMessage
+                self.retry.value = (BreedsViewModel.tryAgainButtonTitle, true)
             }
         }
     }

@@ -20,7 +20,8 @@ struct BreedsViewBuilder {
                                         title: "BreedsList.title".localized,
                                         errorMessage: "BreedsList.errorMessage".localized,
                                         emptyMessage: "BreedsList.emptyMessage".localized,
-                                        loadingMessage: "BreedsList.loadingMessage".localized)
+                                        loadingMessage: "BreedsList.loadingMessage".localized,
+                                        tryAgainButtonTitle: "BreedsList.retry".localized)
         view.viewModel = viewModel
         return view
     }
