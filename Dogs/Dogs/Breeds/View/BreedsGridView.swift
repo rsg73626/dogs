@@ -55,10 +55,19 @@ extension BreedsGridView: UICollectionViewDataSource, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BreedCollectionViewCell", for: indexPath) as? BreedCollectionViewCell
         cell?.configure(viewModel: viewModels[indexPath.row])
+        cell?.breedView.imageView.contentMode = .scaleAspectFill
+        cell?.breedView.layer.cornerRadius = 15
+        cell?.breedView.clipsToBounds = true
         return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 200, height: 200)
+        let side = (collectionView.frame.width / 2) - 12
+        return CGSize(width: side, height: (side * 1.5) + 64)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 8, left: 3, bottom: 8, right: 3)
+    }
+
 }

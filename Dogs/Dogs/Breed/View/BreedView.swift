@@ -80,6 +80,7 @@ final class BreedView: UIView {
         backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        backgroundView.backgroundColor = .systemGray5
         imageView.bottomAnchor.constraint(equalTo: backgroundView.topAnchor).isActive = true
         
         backgroundView.addSubview(nameLabel)
@@ -92,6 +93,7 @@ final class BreedView: UIView {
         imageHeight?.isActive = true
         backgroundHeight = backgroundView.heightAnchor.constraint(equalToConstant: .leastNonzeroMagnitude)
         backgroundHeight?.isActive = true
+
     }
     
 }
