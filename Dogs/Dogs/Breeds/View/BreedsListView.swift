@@ -10,6 +10,8 @@ import UIKit
 class BreedsListView: UIView {
     
     var viewModels = [BreedViewModel]()
+    var willDisplayBreedAt: ((Int) -> Void)?
+    var didSelectBreedAt: ((Int) -> Void)?
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: frame, style: .insetGrouped)
@@ -62,7 +64,7 @@ class BreedsListView: UIView {
     
 }
 
-extension BreedsListView: UITableViewDataSource {
+extension BreedsListView: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModels.count
@@ -76,6 +78,14 @@ extension BreedsListView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BreedTableViewCell", for: indexPath) as? BreedTableViewCell
         cell?.configure(viewModel: viewModels[indexPath.section])
         return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        willDisplayBreedAt?(indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelectBreedAt?(indexPath.row)
     }
     
 }

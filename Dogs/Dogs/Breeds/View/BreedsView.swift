@@ -106,13 +106,16 @@ final class BreedsView: UIViewController {
         list.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         list.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         list.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        list.tableView.delegate = self
+        list.willDisplayBreedAt = viewModel?.willShowBreed(at:)
+        list.didSelectBreedAt = viewModel?.didSelectBreed(at:)
         
         view.addSubview(grid)
         grid.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         grid.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         grid.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         grid.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        grid.willDisplayBreedAt = viewModel?.willShowBreed(at:)
+        grid.didSelectBreedAt = viewModel?.didSelectBreed(at:)
     }
 
     private func bind() {
@@ -141,11 +144,12 @@ final class BreedsView: UIViewController {
         viewModel.hideList.bind { [weak self] isHidden in
             self?.list.isHidden = isHidden
         }
-        viewModel.hideGrid.bind { /*[weak self]*/ isHidden in
-            print(isHidden)
+        viewModel.hideGrid.bind { [weak self] isHidden in
+            self?.grid.isHidden = isHidden
         }
         viewModel.isPaging.bind { [weak self] paging in
             self?.list.loadingContainer.isHidden = paging == false
+            paging ? self?.grid.loadingView.startAnimating() : self?.grid.loadingView.stopAnimating()
         }
         viewModel.hideList.bind { [weak self] isHidden in
             self?.list.isHidden = isHidden
@@ -155,16 +159,4 @@ final class BreedsView: UIViewController {
         }
     }
 
-}
-
-extension BreedsView: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        viewModel?.willShowBreed(at: indexPath.section)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.didSelectBreed(at: indexPath.section)
-    }
-    
 }
