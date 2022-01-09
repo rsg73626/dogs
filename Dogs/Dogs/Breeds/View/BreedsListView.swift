@@ -51,6 +51,7 @@ class BreedsListView: UIView {
         tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(BreedTableViewCell.self, forCellReuseIdentifier: "BreedTableViewCell")
         
         tableView.tableFooterView = loadingContainer
@@ -81,11 +82,11 @@ extension BreedsListView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        willDisplayBreedAt?(indexPath.row)
+        willDisplayBreedAt?(indexPath.section)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectBreedAt?(indexPath.row)
+        didSelectBreedAt?(indexPath.section)
     }
     
 }

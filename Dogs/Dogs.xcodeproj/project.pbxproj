@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C181BF1278B9A8B005F682A /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181BF0278B9A8B005F682A /* GlobalFunctions.swift */; };
 		6C2506AE278655FA009C21EA /* BreedsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2506AD278655FA009C21EA /* BreedsListView.swift */; };
 		6C6137AF2786583C00EA54E9 /* BreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137AE2786583C00EA54E9 /* BreedTableViewCell.swift */; };
 		6C6137B327866E8300EA54E9 /* BreedsServiceCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B227866E8300EA54E9 /* BreedsServiceCompositor.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C181BF0278B9A8B005F682A /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		6C2506AD278655FA009C21EA /* BreedsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListView.swift; sourceTree = "<group>"; };
 		6C6137AE2786583C00EA54E9 /* BreedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedTableViewCell.swift; sourceTree = "<group>"; };
 		6C6137B227866E8300EA54E9 /* BreedsServiceCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsServiceCompositor.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 			children = (
 				6CEF69A92783FC6B00033B1C /* URL+Extensions.swift */,
 				6CCD776827856FE900B92D1B /* String+Extensions.swift */,
+				6C181BF0278B9A8B005F682A /* GlobalFunctions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				6CCD775127856ACF00B92D1B /* BreedsViewBuilder.swift in Sources */,
 				6CEF69A12783F22000033B1C /* HTTPClient.swift in Sources */,
 				6CCD774E2785693E00B92D1B /* BreedsServiceAdapter.swift in Sources */,
+				6C181BF1278B9A8B005F682A /* GlobalFunctions.swift in Sources */,
 				6C2506AE278655FA009C21EA /* BreedsListView.swift in Sources */,
 				6CEF695B2783DCEB00033B1C /* SceneDelegate.swift in Sources */,
 				6CEF69902783E16C00033B1C /* Image.swift in Sources */,

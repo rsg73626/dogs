@@ -16,6 +16,8 @@ final class BreedsViewModel {
     static var listLayoutFilled = "rectangle.grid.1x2.fill"
     static var gridLayout = "square.grid.2x2"
     static var gridLayoutFilled = "square.grid.2x2.fill"
+    static var sortImage = "arrow.up.arrow.down.circle"
+    static var sortedImage = "arrow.up.arrow.down.circle.fill"
     private static var title: String = ""
     private static var errorMessage: String = ""
     private static var emptyMessage: String = ""
@@ -24,8 +26,18 @@ final class BreedsViewModel {
     private var paging = false
     private var didEndPaging = false
     private var currentPage: Int = 0
+    private var sorted = false
+    
+    private var downloadedBreeds = [Breed]()
+    private var currentBreeds: [Breed] {
+        sorted ? downloadedBreeds.sorted { $0.name < $1.name } : downloadedBreeds
+    }
+    private var currentSortButtonImage: Image {
+        .system(name: sorted ? BreedsViewModel.sortedImage : BreedsViewModel.sortImage)
+    }
 
     let layoutSwitcherButtons = Box((list: Image.system(name: ""), grid: Image.system(name: "")))
+    let sortButton = Box(Image.system(name: ""))
     let title = Box("")
     let isLoading = Box(true)
     let isPaging = Box(true)
@@ -55,6 +67,7 @@ final class BreedsViewModel {
 
     func bootstrap() {
         layoutSwitcherButtons.value = (.system(name: BreedsViewModel.listLayoutFilled), .system(name: BreedsViewModel.gridLayout))
+        sortButton.value = currentSortButtonImage
         title.value = BreedsViewModel.title
         isLoading.value = true
         message.value = BreedsViewModel.loadingMessage
@@ -76,7 +89,7 @@ final class BreedsViewModel {
     }
 
     func willShowBreed(at index: Int) {
-        if breeds.value.isEmpty == false, index == breeds.value.count - 1 {
+        if downloadedBreeds.isEmpty == false, index == downloadedBreeds.count - 1 {
             getNextPage()
         }
     }
@@ -91,6 +104,12 @@ final class BreedsViewModel {
         layoutSwitcherButtons.value = (.system(name: BreedsViewModel.listLayout), .system(name: BreedsViewModel.gridLayoutFilled))
         hideList.value = true
         hideGrid.value = false
+    }
+    
+    func didPressSort() {
+        sorted = not(sorted)
+        breeds.value = currentBreeds.toViewModel(breedService, availabledWidth: availabledWidth)
+        sortButton.value = currentSortButtonImage
     }
     
     private func getNextPage() {
@@ -111,7 +130,8 @@ final class BreedsViewModel {
     
     private func didGetPage(_ breeds: [Breed]) {
         currentPage += 1
-        self.breeds.value = self.breeds.value + breeds.toViewModel(self.breedService, availabledWidth: self.availabledWidth)
+        downloadedBreeds = downloadedBreeds + breeds
+        self.breeds.value = currentBreeds.toViewModel(breedService, availabledWidth: availabledWidth)
     }
     
     private func didGet(_ breeds: [Breed]) {
@@ -120,7 +140,8 @@ final class BreedsViewModel {
         } else {
             currentPage += 1
             message.value = ""
-            self.breeds.value = self.breeds.value + breeds.toViewModel(self.breedService, availabledWidth: self.availabledWidth)
+            downloadedBreeds = breeds
+            self.breeds.value = currentBreeds.toViewModel(breedService, availabledWidth: availabledWidth)
             hideList.value = false
         }
     }
@@ -132,4 +153,5 @@ private extension Array where Element == Breed {
     func toViewModel(_ service: BreedService, availabledWidth: Float) -> [BreedViewModel] {
         map { BreedViewModel(breed: $0, service: service, availableWidth: availabledWidth) }
     }
+
 }

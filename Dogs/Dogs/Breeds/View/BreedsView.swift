@@ -25,6 +25,10 @@ final class BreedsView: UIViewController {
                         action: #selector(didPressGridLayout))
     }()
     
+    lazy var sortButton: UIBarButtonItem = {
+        UIBarButtonItem(image: UIImage(systemName: ""), style: .plain, target: self, action: #selector(didPressSort))
+    }()
+    
     lazy var loading: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.hidesWhenStopped = true
@@ -78,9 +82,14 @@ final class BreedsView: UIViewController {
     @objc private func didPressTryAgain() {
         viewModel?.bootstrap()
     }
+    
+    @objc private func didPressSort() {
+        viewModel?.didPressSort()
+    }
 
     private func setUpViews() {
         navigationItem.leftBarButtonItems = [listLayout, gridLayout]
+        navigationItem.rightBarButtonItems = [sortButton]
         
         view.backgroundColor = .systemBackground
         [messageLabel, loading, retryButton, list].forEach { [weak self] v in
@@ -123,6 +132,9 @@ final class BreedsView: UIViewController {
         viewModel.layoutSwitcherButtons.bind { [weak self] list, grid in
             self?.listLayout.image = list.toUIImage()
             self?.gridLayout.image = grid.toUIImage()
+        }
+        viewModel.sortButton.bind { [weak self] image in
+            self?.sortButton.image = image.toUIImage()
         }
         viewModel.title.bind { [weak self] title in
             self?.navigationItem.title = title
