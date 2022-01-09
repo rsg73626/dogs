@@ -28,3 +28,20 @@ class Box<T> {
         observer?(value)
     }
 }
+
+class MultBox<T>: Box<T> {
+    
+    var observers: [Observer?] = []
+    
+    override var value: T {
+        didSet {
+            observers.forEach { $0?(value) }
+        }
+    }
+    
+    override func bind(_ observer: Box<T>.Observer?) {
+        self.observers.append(observer)
+        observer?(value)
+    }
+    
+}

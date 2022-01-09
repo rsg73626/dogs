@@ -13,11 +13,11 @@ final class BreedViewModel {
     private let breed: Breed
     private let availableWidth: Float
     
-    let isLoading = Box(true)
-    let image = Box(Image.named(name: ""))
-    let name = Box("")
-    let imageHeight = Box(Float.zero)
-    let backgroundHeight = Box(Float(64))
+    let isLoading = MultBox(true)
+    let image = MultBox(Image.named(name: ""))
+    let name = MultBox("")
+    let imageHeight = MultBox(Float.zero)
+    let backgroundHeight = MultBox(Float(64))
     
     init(breed: Breed, service: BreedService, availableWidth: Float) {
         self.breed = breed

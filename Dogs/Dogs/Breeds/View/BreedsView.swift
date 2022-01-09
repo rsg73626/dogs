@@ -89,7 +89,7 @@ final class BreedsView: UIViewController {
 
     private func setUpViews() {
         navigationItem.leftBarButtonItems = [listLayout, gridLayout]
-        navigationItem.rightBarButtonItems = [sortButton]
+//        navigationItem.rightBarButtonItems = [sortButton]
         
         view.backgroundColor = .systemBackground
         [messageLabel, loading, retryButton, list].forEach { [weak self] v in
