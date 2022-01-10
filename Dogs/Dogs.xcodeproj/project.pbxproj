@@ -24,6 +24,9 @@
 		6C181C32278BDBFC005F682A /* SearchViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C31278BDBFC005F682A /* SearchViewBuilder.swift */; };
 		6C181C34278BE8A8005F682A /* APISearchBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C33278BE8A8005F682A /* APISearchBreed.swift */; };
 		6C181C36278BEC8D005F682A /* SearchBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C35278BEC8D005F682A /* SearchBreed.swift */; };
+		6C181C38278BF6EB005F682A /* APIBreedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C37278BF6EB005F682A /* APIBreedImage.swift */; };
+		6C181C3A278BF79B005F682A /* SearchBreedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C39278BF79B005F682A /* SearchBreedService.swift */; };
+		6C181C3C278BF7F0005F682A /* SearchBreedServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C3B278BF7F0005F682A /* SearchBreedServiceAdapter.swift */; };
 		6C2506AE278655FA009C21EA /* BreedsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2506AD278655FA009C21EA /* BreedsListView.swift */; };
 		6C6137AF2786583C00EA54E9 /* BreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137AE2786583C00EA54E9 /* BreedTableViewCell.swift */; };
 		6C6137B327866E8300EA54E9 /* BreedsServiceCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B227866E8300EA54E9 /* BreedsServiceCompositor.swift */; };
@@ -40,7 +43,7 @@
 		6CCD776927856FE900B92D1B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD776827856FE900B92D1B /* String+Extensions.swift */; };
 		6CCD776D278576C300B92D1B /* BreedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD776C278576C300B92D1B /* BreedView.swift */; };
 		6CCD777027857CB900B92D1B /* BreedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD776F27857CB900B92D1B /* BreedViewModel.swift */; };
-		6CCD777227857D9800B92D1B /* BreedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD777127857D9800B92D1B /* BreedService.swift */; };
+		6CCD777227857D9800B92D1B /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD777127857D9800B92D1B /* ImageService.swift */; };
 		6CCD77752785800400B92D1B /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD77742785800400B92D1B /* Image+Extensions.swift */; };
 		6CCD77772785817800B92D1B /* ImageServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD77762785817800B92D1B /* ImageServiceAdapter.swift */; };
 		6CEF69592783DCEB00033B1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69582783DCEB00033B1C /* AppDelegate.swift */; };
@@ -56,7 +59,7 @@
 		6CEF69962783E28300033B1C /* InitialViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69952783E28300033B1C /* InitialViewBuilder.swift */; };
 		6CEF699A2783E48600033B1C /* BreedsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69992783E48600033B1C /* BreedsViewModel.swift */; };
 		6CEF699C2783E4AC00033B1C /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF699B2783E4AC00033B1C /* Box.swift */; };
-		6CEF699E2783EBFC00033B1C /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF699D2783EBFC00033B1C /* ImageService.swift */; };
+		6CEF699E2783EBFC00033B1C /* BreedsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF699D2783EBFC00033B1C /* BreedsService.swift */; };
 		6CEF69A12783F22000033B1C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69A02783F22000033B1C /* HTTPClient.swift */; };
 		6CEF69A32783F29F00033B1C /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69A22783F29F00033B1C /* URLSessionHTTPClient.swift */; };
 		6CEF69A52783FA0D00033B1C /* TheDogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEF69A42783FA0D00033B1C /* TheDogAPI.swift */; };
@@ -98,6 +101,9 @@
 		6C181C31278BDBFC005F682A /* SearchViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewBuilder.swift; sourceTree = "<group>"; };
 		6C181C33278BE8A8005F682A /* APISearchBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearchBreed.swift; sourceTree = "<group>"; };
 		6C181C35278BEC8D005F682A /* SearchBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBreed.swift; sourceTree = "<group>"; };
+		6C181C37278BF6EB005F682A /* APIBreedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBreedImage.swift; sourceTree = "<group>"; };
+		6C181C39278BF79B005F682A /* SearchBreedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBreedService.swift; sourceTree = "<group>"; };
+		6C181C3B278BF7F0005F682A /* SearchBreedServiceAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBreedServiceAdapter.swift; sourceTree = "<group>"; };
 		6C2506AD278655FA009C21EA /* BreedsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListView.swift; sourceTree = "<group>"; };
 		6C6137AE2786583C00EA54E9 /* BreedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedTableViewCell.swift; sourceTree = "<group>"; };
 		6C6137B227866E8300EA54E9 /* BreedsServiceCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsServiceCompositor.swift; sourceTree = "<group>"; };
@@ -114,7 +120,7 @@
 		6CCD776827856FE900B92D1B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6CCD776C278576C300B92D1B /* BreedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedView.swift; sourceTree = "<group>"; };
 		6CCD776F27857CB900B92D1B /* BreedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedViewModel.swift; sourceTree = "<group>"; };
-		6CCD777127857D9800B92D1B /* BreedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedService.swift; sourceTree = "<group>"; };
+		6CCD777127857D9800B92D1B /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		6CCD77742785800400B92D1B /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		6CCD77762785817800B92D1B /* ImageServiceAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceAdapter.swift; sourceTree = "<group>"; };
 		6CEF69552783DCEB00033B1C /* Dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,7 +140,7 @@
 		6CEF69952783E28300033B1C /* InitialViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewBuilder.swift; sourceTree = "<group>"; };
 		6CEF69992783E48600033B1C /* BreedsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsViewModel.swift; sourceTree = "<group>"; };
 		6CEF699B2783E4AC00033B1C /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
-		6CEF699D2783EBFC00033B1C /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		6CEF699D2783EBFC00033B1C /* BreedsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsService.swift; sourceTree = "<group>"; };
 		6CEF69A02783F22000033B1C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		6CEF69A22783F29F00033B1C /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		6CEF69A42783FA0D00033B1C /* TheDogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheDogAPI.swift; sourceTree = "<group>"; };
@@ -305,6 +311,7 @@
 				6CEF69A42783FA0D00033B1C /* TheDogAPI.swift */,
 				6CCD774A2785435400B92D1B /* APIBreed.swift */,
 				6C181C33278BE8A8005F682A /* APISearchBreed.swift */,
+				6C181C37278BF6EB005F682A /* APIBreedImage.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -316,6 +323,7 @@
 				6CCD774D2785693E00B92D1B /* BreedsServiceAdapter.swift */,
 				6CCD77762785817800B92D1B /* ImageServiceAdapter.swift */,
 				6C181C27278BDAA3005F682A /* SearchServiceAdapter.swift */,
+				6C181C3B278BF7F0005F682A /* SearchBreedServiceAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -350,7 +358,8 @@
 			isa = PBXGroup;
 			children = (
 				6CCD776F27857CB900B92D1B /* BreedViewModel.swift */,
-				6CCD777127857D9800B92D1B /* BreedService.swift */,
+				6CCD777127857D9800B92D1B /* ImageService.swift */,
+				6C181C39278BF79B005F682A /* SearchBreedService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -492,7 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				6CEF69992783E48600033B1C /* BreedsViewModel.swift */,
-				6CEF699D2783EBFC00033B1C /* ImageService.swift */,
+				6CEF699D2783EBFC00033B1C /* BreedsService.swift */,
 				6C181BFC278BAD25005F682A /* BreedsWireframe.swift */,
 			);
 			path = ViewModel;
@@ -659,6 +668,7 @@
 				6C181BF5278BA690005F682A /* BreedDetailsView.swift in Sources */,
 				6CEF699A2783E48600033B1C /* BreedsViewModel.swift in Sources */,
 				6CCD776927856FE900B92D1B /* String+Extensions.swift in Sources */,
+				6C181C3A278BF79B005F682A /* SearchBreedService.swift in Sources */,
 				6C181C00278BB214005F682A /* BreedsRouter.swift in Sources */,
 				6C6137BF2787284A00EA54E9 /* BreedCollectionViewCell.swift in Sources */,
 				6C181C24278BD456005F682A /* Array+Extensions.swift in Sources */,
@@ -667,7 +677,7 @@
 				6C6137B82786729000EA54E9 /* ImageServiceCompositor.swift in Sources */,
 				6CEF69A52783FA0D00033B1C /* TheDogAPI.swift in Sources */,
 				6C6137BA278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift in Sources */,
-				6CCD777227857D9800B92D1B /* BreedService.swift in Sources */,
+				6CCD777227857D9800B92D1B /* ImageService.swift in Sources */,
 				6CCD77772785817800B92D1B /* ImageServiceAdapter.swift in Sources */,
 				6C181C22278BD412005F682A /* SearchViewModel.swift in Sources */,
 				6CCD77752785800400B92D1B /* Image+Extensions.swift in Sources */,
@@ -684,8 +694,10 @@
 				6CEF69A32783F29F00033B1C /* URLSessionHTTPClient.swift in Sources */,
 				6CCD7748278542A800B92D1B /* HTTPClientError.swift in Sources */,
 				6C6137B327866E8300EA54E9 /* BreedsServiceCompositor.swift in Sources */,
+				6C181C38278BF6EB005F682A /* APIBreedImage.swift in Sources */,
 				6C181BFB278BACB4005F682A /* BreedDetailsViewBuilder.swift in Sources */,
 				6CCD775127856ACF00B92D1B /* BreedsViewBuilder.swift in Sources */,
+				6C181C3C278BF7F0005F682A /* SearchBreedServiceAdapter.swift in Sources */,
 				6CEF69A12783F22000033B1C /* HTTPClient.swift in Sources */,
 				6CCD774E2785693E00B92D1B /* BreedsServiceAdapter.swift in Sources */,
 				6C181BF1278B9A8B005F682A /* GlobalFunctions.swift in Sources */,
@@ -696,7 +708,7 @@
 				6CCD776D278576C300B92D1B /* BreedView.swift in Sources */,
 				6C181C2B278BDAF4005F682A /* Map.swift in Sources */,
 				6C181C2E278BDB76005F682A /* SearchServiceCompositor.swift in Sources */,
-				6CEF699E2783EBFC00033B1C /* ImageService.swift in Sources */,
+				6CEF699E2783EBFC00033B1C /* BreedsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

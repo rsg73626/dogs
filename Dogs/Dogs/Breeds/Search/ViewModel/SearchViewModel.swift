@@ -25,6 +25,7 @@ final class SearchViewModel {
     
     private let service: SearchService
     private let imageService: ImageService
+    private let searchBreedService: SearchBreedService
     private let router: BreedsWireframe
     private let availabledWidth: Float
     
@@ -56,10 +57,12 @@ final class SearchViewModel {
 
     init(service: SearchService,
          imageService: ImageService,
+         searchBreedService: SearchBreedService,
          router: BreedsWireframe,
          availabledWidth: Float) {
         self.service = service
         self.imageService = imageService
+        self.searchBreedService = searchBreedService
         self.router = router
         self.availabledWidth = availabledWidth
     }
@@ -98,7 +101,7 @@ final class SearchViewModel {
     
     func didPressSort() {
         sorted = not(sorted)
-        breeds.value = currentBreeds.toViewModel(imageService, availabledWidth: availabledWidth)
+        breeds.value = currentBreeds.toViewModel(imageService, searchBreedService, availabledWidth: availabledWidth)
         sortButton.value = currentSortButtonImage
     }
     
@@ -142,7 +145,7 @@ final class SearchViewModel {
     private func didGetPage(_ breeds: [SearchBreed]) {
         currentPage += 1
         downloadedBreeds = downloadedBreeds + breeds
-        self.breeds.value = currentBreeds.toViewModel(imageService, availabledWidth: availabledWidth)
+        self.breeds.value = currentBreeds.toViewModel(imageService, searchBreedService, availabledWidth: availabledWidth)
     }
     
     private func didGet(_ breeds: [SearchBreed], _ incrementPage: Bool) {
@@ -152,7 +155,7 @@ final class SearchViewModel {
             currentPage += incrementPage ? 1 : 0
             message.value = ""
             downloadedBreeds = breeds
-            self.breeds.value = currentBreeds.toViewModel(imageService, availabledWidth: availabledWidth)
+            self.breeds.value = currentBreeds.toViewModel(imageService, searchBreedService, availabledWidth: availabledWidth)
             hideList.value = false
         }
     }

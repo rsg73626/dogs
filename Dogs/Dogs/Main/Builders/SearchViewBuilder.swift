@@ -11,11 +11,15 @@ struct SearchViewBuilder {
     
     private init() { }
     
-    static func build(searchService: SearchService, imageService: ImageService, availabledWidth: Float) -> SearchView {
+    static func build(searchService: SearchService,
+                      imageService: ImageService,
+                      searchBreedService: SearchBreedService,
+                      availabledWidth: Float) -> SearchView {
         let view = SearchView()
         let router = BreedsRouter()
         let viewModel = SearchViewModel(service: searchService,
                                         imageService: imageService,
+                                        searchBreedService: searchBreedService,
                                         router: router,
                                         availabledWidth: availabledWidth)
         viewModel.viewTitle = "BreedsList.title".localized

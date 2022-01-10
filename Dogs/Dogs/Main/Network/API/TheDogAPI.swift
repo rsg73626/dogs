@@ -14,35 +14,46 @@ final class TheDogAPI {
         case invalidData
     }
 
+    var baseURL = "https://api.thedogapi.com/v1"
     var apiKeyHeaderName = "x-api-key"
     var pageSizeQueryKey = "limit"
     var pageQueryKey = "page"
     var queryQueryKey = "q"
     var decoder = JSONDecoder()
     private let httpClient: HTTPClient
-    private let url: URL
     private let apiKey: String?
+    
+    var list: URL {
+        URL(string: baseURL + "/breeds")!
+    }
+    
+    var search: URL {
+        URL(string: baseURL + "/breeds/search")!
+    }
+    
+    func imageURL(imageId: String) -> URL {
+        URL(string: baseURL + "/images/\(imageId)")!
+    }
 
-    init(httpClient: HTTPClient, url: URL, apiKey: String?) {
+    init(httpClient: HTTPClient, apiKey: String?) {
         self.httpClient = httpClient
-        self.url = url
         self.apiKey = apiKey
     }
 
     func readBreeds(page: Int, size: Int) async throws -> [APIBreed] {
-        try await execute([pageSizeQueryKey: "\(size)", pageQueryKey: "\(page)"])
+        try await execute(list, [pageSizeQueryKey: "\(size)", pageQueryKey: "\(page)"])
     }
     
     func readBreeds(query: String, page: Int, size: Int) async throws -> [APISearchBreed] {
-        try await execute([queryQueryKey: query, pageSizeQueryKey: "\(size)", pageQueryKey: "\(page)"])
+        try await execute(search, [queryQueryKey: query, pageSizeQueryKey: "\(size)", pageQueryKey: "\(page)"])
     }
     
-    static func searchImageURL(imageId: String) -> URL {
-        URL(string: "https://api.thedogapi.com/v1/images/\(imageId)")!
+    func redImage(id: String) async throws -> APIBreedImage {
+        try await execute(imageURL(imageId: id), [:])
     }
     
-    private func execute<T: Decodable>(_ queries: [String: String]) async throws -> T {
-        guard let url = self.url.appending(queries: queries) else {
+    private func execute<T: Decodable>(_ url: URL, _ queries: [String: String]) async throws -> T {
+        guard let url = url.appending(queries: queries) else {
             throw Error.invalidURL
         }
         let headers = apiKey != nil ? [apiKeyHeaderName: apiKey!] : [:]

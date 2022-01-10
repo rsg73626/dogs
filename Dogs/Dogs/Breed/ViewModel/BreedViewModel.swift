@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 final class BreedViewModel {
     
     enum Model {
         case breed(_ breed: Breed)
-        case searchBreed(_ searchBreed: SearchBreed)
+        case searchBreed(_ searchBreed: SearchBreed, _ service: SearchBreedService)
     }
     
     private let imageService: ImageService
@@ -41,8 +42,34 @@ final class BreedViewModel {
                     self?.image.value = .data(data: safeData)
                 }
             }
-        case let .searchBreed(searchBreed):
-            print(searchBreed)
+        case let .searchBreed(searchBreed, service):
+            name.value = searchBreed.name
+            imageHeight.value = availableWidth
+            guard let id = searchBreed.imageId else {
+                isLoading.value = false
+                return
+            }
+            getImageURL(id, service)
+        }
+    }
+    
+    private func getImageURL(_ imageID: String, _ service: SearchBreedService) {
+        service.getImageURL(imageId: imageID) { [weak self] url in
+            guard let url = url else {
+                self?.isLoading.value = false
+                return
+            }
+            self?.getImage(url)
+        }
+    }
+    
+    private func getImage(_ url: URL) {
+        imageService.downloadImage(formURL: url) { [weak self] data in
+            guard let self = self else { return }
+            self.isLoading.value = false
+            if let data = data {
+                self.image.value = .data(data: data)
+            }
         }
     }
 }

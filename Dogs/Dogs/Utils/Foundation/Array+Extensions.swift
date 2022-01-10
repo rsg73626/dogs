@@ -17,8 +17,8 @@ extension Array where Element == Breed {
 
 extension Array where Element == SearchBreed {
 
-    func toViewModel(_ imageService: ImageService, availabledWidth: Float) -> [BreedViewModel] {
-        map { BreedViewModel(model: .searchBreed($0), imageService: imageService, availableWidth: availabledWidth) }
+    func toViewModel(_ imageService: ImageService, _ searchBreedService: SearchBreedService, availabledWidth: Float) -> [BreedViewModel] {
+        map { BreedViewModel(model: .searchBreed($0, searchBreedService), imageService: imageService, availableWidth: availabledWidth) }
     }
 
 }

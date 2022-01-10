@@ -12,8 +12,7 @@ struct InitialViewBuilder {
     private init() { }
     
     private static func breedsList(screenSize: CGSize, apiKey: String) -> BreedsView {
-        let url = URL(string: "https://api.thedogapi.com/v1/breeds")!
-        let api = TheDogAPI(httpClient: URLSessionHTTPClient(), url: url, apiKey: apiKey)
+        let api = TheDogAPI(httpClient: URLSessionHTTPClient(), apiKey: apiKey)
         let service = BreedsServiceAdapter(api: api)
         let dispatcher = BreedsServiceCompletionDispatcher()
         dispatcher.composed = service
@@ -28,8 +27,7 @@ struct InitialViewBuilder {
     }
     
     private static func breedsSearch(screenSize: CGSize, apiKey: String) -> SearchView {
-        let url = URL(string: "https://api.thedogapi.com/v1/breeds/search")!
-        let api = TheDogAPI(httpClient: URLSessionHTTPClient(), url: url, apiKey: apiKey)
+        let api = TheDogAPI(httpClient: URLSessionHTTPClient(), apiKey: apiKey)
         let service = SearchServiceAdapter(api: api)
         let dispatcher = SearchServiceCompletionDispatcher()
         dispatcher.composed = service
@@ -38,6 +36,7 @@ struct InitialViewBuilder {
         imageServiceDispatcher.composed = imageService
         let view = SearchViewBuilder.build(searchService: dispatcher,
                                            imageService: imageServiceDispatcher,
+                                           searchBreedService: SearchBreedServiceAdapter(api: api),
                                            availabledWidth: Float(screenSize.width))
         view.tabBarItem = UITabBarItem(title: "Search".localized, image: UIImage(systemName: "magnifyingglass.circle"), tag: .zero)
         return view
