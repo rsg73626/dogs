@@ -9,8 +9,16 @@ import Foundation
 
 extension Array where Element == Breed {
 
-    func toViewModel(_ service: BreedService, availabledWidth: Float) -> [BreedViewModel] {
-        map { BreedViewModel(breed: $0, service: service, availableWidth: availabledWidth) }
+    func toViewModel(_ imageService: ImageService, availabledWidth: Float) -> [BreedViewModel] {
+        map { BreedViewModel(model: .breed($0), imageService: imageService, availableWidth: availabledWidth) }
+    }
+
+}
+
+extension Array where Element == SearchBreed {
+
+    func toViewModel(_ imageService: ImageService, availabledWidth: Float) -> [BreedViewModel] {
+        map { BreedViewModel(model: .searchBreed($0), imageService: imageService, availableWidth: availabledWidth) }
     }
 
 }

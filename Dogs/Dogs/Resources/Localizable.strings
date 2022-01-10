@@ -6,13 +6,19 @@
   
 */
 
+"List" = "List";
+"Search" = "Search";
+
 "BreedsList.title" = "Breeds";
 "BreedsList.errorMessage" = "Something went wrong. \nTry again.";
 "BreedsList.emptyMessage" = "No breeds were found.";
 "BreedsList.loadingMessage" = "Loading...";
+"BreedsList.enterTextMessage" = "Enter some text in the search bar above.";
 "BreedsList.retry" = "Tray again";
 
 "BreedDetails.title" = "Details";
 "BreedDetails.category" = "Category: %@";
 "BreedDetails.origin" = "Origin: %@";
 "BreedDetails.temperament" = "Temperament: %@";
+
+"Search.placeholder" = "Enter some text.";

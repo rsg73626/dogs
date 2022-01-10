@@ -1,5 +1,5 @@
 //
-//  BreedsService.swift
+//  ImageService.swift
 //  Dogs
 //
 //  Created by Temporary Account on 03/01/22.

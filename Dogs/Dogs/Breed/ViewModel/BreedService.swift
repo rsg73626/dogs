@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol BreedService {
+protocol ImageService {
     func downloadImage(formURL url: URL, completion: @escaping (Data?) -> Void)
 }

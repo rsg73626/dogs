@@ -9,8 +9,13 @@ import Foundation
 
 final class BreedViewModel {
     
-    private let service: BreedService
-    private let breed: Breed
+    enum Model {
+        case breed(_ breed: Breed)
+        case searchBreed(_ searchBreed: SearchBreed)
+    }
+    
+    private let imageService: ImageService
+    private let model: Model
     private let availableWidth: Float
     
     let isLoading = MultBox(true)
@@ -19,20 +24,25 @@ final class BreedViewModel {
     let imageHeight = MultBox(Float.zero)
     let backgroundHeight = MultBox(Float(64))
     
-    init(breed: Breed, service: BreedService, availableWidth: Float) {
-        self.breed = breed
-        self.service = service
+    init(model: Model, imageService: ImageService, availableWidth: Float) {
+        self.model = model
+        self.imageService = imageService
         self.availableWidth = availableWidth
     }
     
     func bootstrap() {
-        name.value = breed.name
-        imageHeight.value = (breed.imageHeigh * availableWidth)/breed.imageWidth
-        service.downloadImage(formURL: breed.image) { [weak self] data in
-            if let safeData = data {
-                self?.isLoading.value = false
-                self?.image.value = .data(data: safeData)
+        switch model {
+        case let .breed(breed):
+            name.value = breed.name
+            imageHeight.value = (breed.imageHeigh * availableWidth)/breed.imageWidth
+            imageService.downloadImage(formURL: breed.image) { [weak self] data in
+                if let safeData = data {
+                    self?.isLoading.value = false
+                    self?.image.value = .data(data: safeData)
+                }
             }
+        case let .searchBreed(searchBreed):
+            print(searchBreed)
         }
     }
 }

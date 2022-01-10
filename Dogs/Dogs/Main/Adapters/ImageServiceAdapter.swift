@@ -1,5 +1,5 @@
 //
-//  BreedServiceAdapter.swift
+//  ImageServiceAdapter.swift
 //  Dogs
 //
 //  Created by Temporary Account on 05/01/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class BreedServiceAdapter: BreedService {
+final class ImageServiceAdapter: ImageService {
     
     let httpClient: HTTPClient
     

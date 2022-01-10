@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SearchService {
-    func loadBreeds(query: String, page: Int, completion: @escaping ([Breed]?) -> Void)
+    func loadBreeds(query: String, page: Int, completion: @escaping ([SearchBreed]?) -> Void)
 }

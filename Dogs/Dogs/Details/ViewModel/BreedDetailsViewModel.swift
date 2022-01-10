@@ -10,7 +10,7 @@ import Foundation
 final class BreedDetailsViewModel {
     
     private let model: Breed
-    private let service: BreedService
+    private let imageService: ImageService
     
     let title = Box("")
     let isLoading = Box(true)
@@ -20,9 +20,9 @@ final class BreedDetailsViewModel {
     let origin = Box("")
     let temperament = Box("")
     
-    init(model: Breed, service: BreedService) {
+    init(model: Breed, imageService: ImageService) {
         self.model = model
-        self.service = service
+        self.imageService = imageService
     }
     
     func bootstrap() {
@@ -31,7 +31,7 @@ final class BreedDetailsViewModel {
         category.value = String(format: "BreedDetails.category".localized, model.category.nonEmpty)
         origin.value = String(format: "BreedDetails.origin".localized, model.origin.nonEmpty)
         temperament.value = String(format: "BreedDetails.temperament".localized, model.temperament.nonEmpty)
-        service.downloadImage(formURL: model.image) { [weak self] data in
+        imageService.downloadImage(formURL: model.image) { [weak self] data in
             self?.isLoading.value = false
             if let safeData = data {
                 self?.image.value = .data(data: safeData)

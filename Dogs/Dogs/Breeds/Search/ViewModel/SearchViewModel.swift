@@ -9,11 +9,13 @@ import Foundation
 
 final class SearchViewModel {
     
-    var viewTitle: String = ""
-    var errorMessage: String = ""
-    var emptyMessage: String = ""
-    var loadingMessage: String = ""
-    var tryAgainButtonTitle: String = ""
+    var viewTitle = ""
+    var searchBarPlaceholder = ""
+    var errorMessage = ""
+    var emptyMessage = ""
+    var loadingMessage = ""
+    var enterSomeTextMessage = ""
+    var tryAgainButtonTitle = ""
     var listLayout = ""
     var listLayoutFilled = ""
     var gridLayout = ""
@@ -22,16 +24,18 @@ final class SearchViewModel {
     var sortedImage = ""
     
     private let service: SearchService
-    private let breedService: BreedService
-    private let availabledWidth: Float
+    private let imageService: ImageService
     private let router: BreedsWireframe
+    private let availabledWidth: Float
+    
+    private var query = ""
     private var paging = false
     private var didEndPaging = false
     private var currentPage: Int = 0
     private var sorted = false
     
-    private var downloadedBreeds = [Breed]()
-    private var currentBreeds: [Breed] {
+    private var downloadedBreeds = [SearchBreed]()
+    private var currentBreeds: [SearchBreed] {
         sorted ? downloadedBreeds.sorted { $0.name < $1.name } : downloadedBreeds
     }
     private var currentSortButtonImage: Image {
@@ -40,9 +44,10 @@ final class SearchViewModel {
 
     let layoutSwitcherButtons = Box((list: Image.system(name: ""), grid: Image.system(name: "")))
     let sortButton = Box(Image.system(name: ""))
+    let searchPlaceholder = Box("")
     let title = Box("")
     let isLoading = Box(true)
-    let isPaging = Box(true)
+    let isPaging = Box(false)
     let message = Box("")
     let retry = Box((title: "", visible: false))
     let breeds = Box([BreedViewModel]())
@@ -50,11 +55,11 @@ final class SearchViewModel {
     let hideGrid = Box(true)
 
     init(service: SearchService,
-         breedService: BreedService,
+         imageService: ImageService,
          router: BreedsWireframe,
          availabledWidth: Float) {
         self.service = service
-        self.breedService = breedService
+        self.imageService = imageService
         self.router = router
         self.availabledWidth = availabledWidth
     }
@@ -63,23 +68,14 @@ final class SearchViewModel {
         layoutSwitcherButtons.value = (.system(name: listLayoutFilled), .system(name: gridLayout))
         sortButton.value = currentSortButtonImage
         title.value = viewTitle
-        isLoading.value = true
-        message.value = loadingMessage
+        searchPlaceholder.value = searchBarPlaceholder
+        isLoading.value = false
+        message.value = enterSomeTextMessage
         retry.value = (tryAgainButtonTitle, false)
-//        service.loadBreeds(page: currentPage) { [weak self] breeds in
-//            guard let self = self else { return }
-//            self.isLoading.value = false
-//            if let breeds = breeds {
-//                self.didGet(breeds)
-//            } else {
-//                self.message.value = errorMessage
-//                self.retry.value = (tryAgainButtonTitle, true)
-//            }
-//        }
     }
 
     func didSelectBreed(at index: Int) {
-        router.showBreedDetails(downloadedBreeds[index])
+//        router.showBreedDetails(downloadedBreeds[index])
     }
 
     func willShowBreed(at index: Int) {
@@ -102,40 +98,61 @@ final class SearchViewModel {
     
     func didPressSort() {
         sorted = not(sorted)
-        breeds.value = currentBreeds.toViewModel(breedService, availabledWidth: availabledWidth)
+        breeds.value = currentBreeds.toViewModel(imageService, availabledWidth: availabledWidth)
         sortButton.value = currentSortButtonImage
+    }
+    
+    func didEnter(text: String) {
+        self.query = text
+        downloadedBreeds = []
+        breeds.value = []
+        isLoading.value = true
+        message.value = loadingMessage
+        guard not(text.replacingOccurrences(of: " ", with: "").isEmpty) else {
+            message.value = enterSomeTextMessage
+            return
+        }
+        service.loadBreeds(query: text, page: currentPage) { [weak self] breeds in
+            guard let self = self else { return }
+            if let breeds = breeds {
+                self.didGet(breeds, false)
+            } else {
+                self.message.value = self.errorMessage
+                self.retry.value = (self.tryAgainButtonTitle, true)
+            }
+        }
     }
     
     private func getNextPage() {
         guard paging == false, didEndPaging == false else { return }
         isPaging.value = true
-//        service.loadBreeds(page: currentPage) { [weak self] breeds in
-//            self?.paging = false
-//            self?.isPaging.value = false
-//            if let breeds = breeds {
-//                if breeds.isEmpty {
-//                    self?.didEndPaging = true
-//                } else {
-//                    self?.didGetPage(breeds)
-//                }
-//            }
-//        }
+        service.loadBreeds(query: query, page: currentPage) { [weak self] breeds in
+            self?.paging = false
+            self?.isPaging.value = false
+            if let breeds = breeds {
+                if breeds.isEmpty {
+                    self?.didEndPaging = true
+                } else {
+                    self?.didGetPage(breeds)
+                }
+            }
+        }
     }
     
-    private func didGetPage(_ breeds: [Breed]) {
+    private func didGetPage(_ breeds: [SearchBreed]) {
         currentPage += 1
         downloadedBreeds = downloadedBreeds + breeds
-        self.breeds.value = currentBreeds.toViewModel(breedService, availabledWidth: availabledWidth)
+        self.breeds.value = currentBreeds.toViewModel(imageService, availabledWidth: availabledWidth)
     }
     
-    private func didGet(_ breeds: [Breed]) {
+    private func didGet(_ breeds: [SearchBreed], _ incrementPage: Bool) {
         if breeds.isEmpty {
             message.value = emptyMessage
         } else {
-            currentPage += 1
+            currentPage += incrementPage ? 1 : 0
             message.value = ""
             downloadedBreeds = breeds
-            self.breeds.value = currentBreeds.toViewModel(breedService, availabledWidth: availabledWidth)
+            self.breeds.value = currentBreeds.toViewModel(imageService, availabledWidth: availabledWidth)
             hideList.value = false
         }
     }

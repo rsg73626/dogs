@@ -29,6 +29,10 @@ final class SearchView: UIViewController {
         UIBarButtonItem(image: UIImage(systemName: ""), style: .plain, target: self, action: #selector(didPressSort))
     }()
     
+    lazy var searchBar: UISearchBar = {
+        UISearchBar()
+    }()
+    
     lazy var loading: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.hidesWhenStopped = true
@@ -89,7 +93,10 @@ final class SearchView: UIViewController {
 
     private func setUpViews() {
         navigationItem.leftBarButtonItems = [listLayout, gridLayout]
-//        navigationItem.rightBarButtonItems = [sortButton]
+        navigationItem.rightBarButtonItems = [sortButton]
+        
+        navigationItem.titleView = searchBar
+        searchBar.delegate = self
         
         view.backgroundColor = .systemBackground
         [messageLabel, loading, retryButton, list].forEach { [weak self] v in
@@ -139,6 +146,9 @@ final class SearchView: UIViewController {
         viewModel.title.bind { [weak self] title in
             self?.navigationItem.title = title
         }
+        viewModel.searchPlaceholder.bind { [weak self] placeholder in
+            self?.searchBar.placeholder = placeholder
+        }
         viewModel.isLoading.bind { [weak self] isLoading in
             isLoading ? self?.loading.startAnimating() : self?.loading.stopAnimating()
         }
@@ -169,6 +179,30 @@ final class SearchView: UIViewController {
         viewModel.hideGrid.bind { [weak self] isHidden in
             self?.grid.isHidden = isHidden
         }
+    }
+    
+}
+
+extension SearchView: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        navigationItem.leftBarButtonItems = []
+        navigationItem.rightBarButtonItems = []
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        navigationItem.leftBarButtonItems = [listLayout, gridLayout]
+        navigationItem.rightBarButtonItems = [sortButton]
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel?.didEnter(text: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
 }

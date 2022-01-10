@@ -13,9 +13,9 @@ struct BreedDetailsViewBuilder {
     
     static func build(breed: Breed) -> BreedDetailsView {
         let view = BreedDetailsView()
-        let adapter = BreedServiceAdapter(httpClient: URLSessionHTTPClient())
-        let dispatcher = BreedServiceCompletionDispatcher()
-        let viewModel = BreedDetailsViewModel(model: breed, service: dispatcher)
+        let adapter = ImageServiceAdapter(httpClient: URLSessionHTTPClient())
+        let dispatcher = ImageServiceCompletionDispatcher()
+        let viewModel = BreedDetailsViewModel(model: breed, imageService: dispatcher)
         
         view.viewModel = viewModel
         dispatcher.composed = adapter

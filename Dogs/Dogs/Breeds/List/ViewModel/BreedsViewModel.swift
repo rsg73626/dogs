@@ -22,7 +22,7 @@ final class BreedsViewModel {
     var sortedImage = ""
     
     private let service: BreedsService
-    private let breedService: BreedService
+    private let imageService: ImageService
     private let availabledWidth: Float
     private let router: BreedsWireframe
     private var paging = false
@@ -33,7 +33,7 @@ final class BreedsViewModel {
     let layoutSwitcherButtons = Box((list: Image.system(name: ""), grid: Image.system(name: "")))
     let title = Box("")
     let isLoading = Box(true)
-    let isPaging = Box(true)
+    let isPaging = Box(false)
     let message = Box("")
     let retry = Box((title: "", visible: false))
     let breeds = Box([BreedViewModel]())
@@ -41,11 +41,11 @@ final class BreedsViewModel {
     let hideGrid = Box(true)
 
     init(service: BreedsService,
-         breedService: BreedService,
+         imageService: ImageService,
          router: BreedsWireframe,
          availabledWidth: Float) {
         self.service = service
-        self.breedService = breedService
+        self.imageService = imageService
         self.router = router
         self.availabledWidth = availabledWidth
     }
@@ -109,7 +109,7 @@ final class BreedsViewModel {
     private func didGetPage(_ breeds: [Breed]) {
         currentPage += 1
         downloadedBreeds = downloadedBreeds + breeds
-        self.breeds.value = downloadedBreeds.toViewModel(breedService, availabledWidth: availabledWidth)
+        self.breeds.value = downloadedBreeds.toViewModel(imageService, availabledWidth: availabledWidth)
     }
     
     private func didGet(_ breeds: [Breed]) {
@@ -119,7 +119,7 @@ final class BreedsViewModel {
             currentPage += 1
             message.value = ""
             downloadedBreeds = breeds
-            self.breeds.value = downloadedBreeds.toViewModel(breedService, availabledWidth: availabledWidth)
+            self.breeds.value = downloadedBreeds.toViewModel(imageService, availabledWidth: availabledWidth)
             hideList.value = false
         }
     }

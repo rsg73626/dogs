@@ -1,5 +1,5 @@
 //
-//  BreedServiceCompletionDispatcher.swift
+//  ImageServiceCompletionDispatcher.swift
 //  Dogs
 //
 //  Created by Temporary Account on 05/01/22.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class BreedServiceCompletionDispatcher: BreedServiceCompositor {
+final class ImageServiceCompletionDispatcher: ImageServiceCompositor {
     
-    var composed: BreedService?
+    var composed: ImageService?
     let queue: DispatchQueue
     
     init(queue: DispatchQueue = .main) {

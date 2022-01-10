@@ -23,11 +23,3 @@ final class BreedsServiceAdapter: BreedsService {
         }
     }
 }
-
-private extension Array where Element == APIBreed {
-    
-    func toModel() -> [Breed] {
-        map { Breed(name: $0.name, image: $0.image.url, imageWidth: $0.image.width, imageHeigh: $0.image.height, category: $0.breed_group ?? "", origin: $0.origin ?? "", temperament: $0.temperament ?? "") }
-    }
-    
-}

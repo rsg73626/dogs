@@ -1,28 +1,29 @@
 //
-//  BreedsViewBuilder.swift
+//  SearchViewBuilder.swift
 //  Dogs
 //
-//  Created by Temporary Account on 05/01/22.
+//  Created by Temporary Account on 10/01/22.
 //
 
 import Foundation
-import UIKit
 
-struct BreedsViewBuilder {
+struct SearchViewBuilder {
     
     private init() { }
     
-    static func build(breedsService: BreedsService, imageService: ImageService, availabledWidth: Float) -> BreedsView {
-        let view = BreedsView()
+    static func build(searchService: SearchService, imageService: ImageService, availabledWidth: Float) -> SearchView {
+        let view = SearchView()
         let router = BreedsRouter()
-        let viewModel = BreedsViewModel(service: breedsService,
+        let viewModel = SearchViewModel(service: searchService,
                                         imageService: imageService,
                                         router: router,
                                         availabledWidth: availabledWidth)
         viewModel.viewTitle = "BreedsList.title".localized
+        viewModel.searchBarPlaceholder = "Search.placeholder".localized
         viewModel.errorMessage = "BreedsList.errorMessage".localized
         viewModel.emptyMessage = "BreedsList.emptyMessage".localized
         viewModel.loadingMessage = "BreedsList.loadingMessage".localized
+        viewModel.enterSomeTextMessage = "BreedsList.enterTextMessage".localized
         viewModel.tryAgainButtonTitle = "BreedsList.retry".localized
         viewModel.listLayout = "rectangle.grid.1x2"
         viewModel.listLayoutFilled = "rectangle.grid.1x2.fill"
@@ -34,4 +35,5 @@ struct BreedsViewBuilder {
         router.view = view
         return view
     }
+    
 }
