@@ -12,4 +12,7 @@ struct Breed {
     let image: URL
     let imageWidth: Float
     let imageHeigh: Float
+    let category: String
+    let origin: String
+    let temperament: String
 }

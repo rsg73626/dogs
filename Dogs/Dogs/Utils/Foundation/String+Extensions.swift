@@ -13,4 +13,8 @@ extension String {
         NSLocalizedString(self, comment: "")
     }
     
+    var nonEmpty: String {
+        isEmpty ? "-" : self
+    }
+    
 }

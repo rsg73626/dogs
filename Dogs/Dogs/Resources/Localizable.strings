@@ -11,3 +11,8 @@
 "BreedsList.emptyMessage" = "No breeds were found.";
 "BreedsList.loadingMessage" = "Loading...";
 "BreedsList.retry" = "Tray again";
+
+"BreedDetails.title" = "Details";
+"BreedDetails.category" = "Category: %@";
+"BreedDetails.origin" = "Origin: %@";
+"BreedDetails.temperament" = "Temperament: %@";

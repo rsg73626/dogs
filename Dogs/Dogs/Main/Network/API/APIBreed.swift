@@ -17,6 +17,7 @@ struct APIBreed: Decodable {
     let origin: String?
     let country_code: String?
     let image: APIImage
+    let breed_group: String?
 }
 
 struct APIImage: Decodable {

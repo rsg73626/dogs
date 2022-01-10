@@ -99,7 +99,7 @@ final class BreedsView: UIViewController {
 
         messageLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         messageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
-        messageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 8).isActive = true
+        messageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
 
         loading.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loading.bottomAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -32).isActive = true

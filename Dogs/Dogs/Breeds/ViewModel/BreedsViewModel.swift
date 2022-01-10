@@ -12,6 +12,7 @@ final class BreedsViewModel {
     private let service: BreedsService
     private let breedService: BreedService
     private let availabledWidth: Float
+    private let router: BreedsWireframe
     static var listLayout = "rectangle.grid.1x2"
     static var listLayoutFilled = "rectangle.grid.1x2.fill"
     static var gridLayout = "square.grid.2x2"
@@ -49,6 +50,7 @@ final class BreedsViewModel {
 
     init(service: BreedsService,
          breedService: BreedService,
+         router: BreedsWireframe,
          availabledWidth: Float,
          title: String,
          errorMessage: String,
@@ -57,6 +59,7 @@ final class BreedsViewModel {
          tryAgainButtonTitle: String) {
         self.service = service
         self.breedService = breedService
+        self.router = router
         self.availabledWidth = availabledWidth
         BreedsViewModel.title = title
         BreedsViewModel.errorMessage = errorMessage
@@ -85,7 +88,7 @@ final class BreedsViewModel {
     }
 
     func didSelectBreed(at index: Int) {
-
+        router.showBreedDetails(downloadedBreeds[index])
     }
 
     func willShowBreed(at index: Int) {
