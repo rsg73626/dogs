@@ -18,12 +18,18 @@ struct BreedsViewBuilder {
         let viewModel = BreedsViewModel(service: breedsService,
                                         breedService: breedService,
                                         router: router,
-                                        availabledWidth: availabledWidth,
-                                        title: "BreedsList.title".localized,
-                                        errorMessage: "BreedsList.errorMessage".localized,
-                                        emptyMessage: "BreedsList.emptyMessage".localized,
-                                        loadingMessage: "BreedsList.loadingMessage".localized,
-                                        tryAgainButtonTitle: "BreedsList.retry".localized)
+                                        availabledWidth: availabledWidth)
+        viewModel.viewTitle = "BreedsList.title".localized
+        viewModel.errorMessage = "BreedsList.errorMessage".localized
+        viewModel.emptyMessage = "BreedsList.emptyMessage".localized
+        viewModel.loadingMessage = "BreedsList.loadingMessage".localized
+        viewModel.tryAgainButtonTitle = "BreedsList.retry".localized
+        viewModel.listLayout = "rectangle.grid.1x2"
+        viewModel.listLayoutFilled = "rectangle.grid.1x2.fill"
+        viewModel.gridLayout = "square.grid.2x2"
+        viewModel.gridLayoutFilled = "square.grid.2x2.fill"
+        viewModel.sortImage = "arrow.up.arrow.down.circle"
+        viewModel.sortedImage = "arrow.up.arrow.down.circle.fill"
         view.viewModel = viewModel
         router.view = view
         return view

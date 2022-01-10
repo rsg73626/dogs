@@ -1,15 +1,15 @@
 //
-//  BreedsView.swift
+//  SearchView.swift
 //  Dogs
 //
-//  Created by Temporary Account on 03/01/22.
+//  Created by Temporary Account on 09/01/22.
 //
 
 import UIKit
 
-final class BreedsView: UIViewController {
-
-    var viewModel: BreedsViewModel?
+final class SearchView: UIViewController {
+    
+    var viewModel: SearchViewModel?
     
     lazy var listLayout: UIBarButtonItem = {
         UIBarButtonItem(image: UIImage(systemName: ""),
@@ -170,5 +170,5 @@ final class BreedsView: UIViewController {
             self?.grid.isHidden = isHidden
         }
     }
-
+    
 }
