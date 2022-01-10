@@ -124,6 +124,10 @@ final class BreedsView: UIViewController {
             self?.listLayout.image = list.toUIImage()
             self?.gridLayout.image = grid.toUIImage()
         }
+        viewModel.layoutAvailability.bind { [weak self] list, grid in
+            self?.listLayout.isEnabled = list
+            self?.gridLayout.isEnabled = grid
+        }
         viewModel.title.bind { [weak self] title in
             self?.navigationItem.title = title
         }

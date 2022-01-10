@@ -11,11 +11,11 @@ struct BreedDetailsViewBuilder {
     
     private init() { }
     
-    static func build(breed: Breed) -> BreedDetailsView {
+    static func build(model: Model) -> BreedDetailsView {
         let view = BreedDetailsView()
         let adapter = ImageServiceAdapter(httpClient: URLSessionHTTPClient())
         let dispatcher = ImageServiceCompletionDispatcher()
-        let viewModel = BreedDetailsViewModel(model: breed, imageService: dispatcher)
+        let viewModel = BreedDetailsViewModel(model: model, imageService: dispatcher)
         
         view.viewModel = viewModel
         dispatcher.composed = adapter

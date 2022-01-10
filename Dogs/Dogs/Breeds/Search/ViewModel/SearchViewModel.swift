@@ -44,6 +44,7 @@ final class SearchViewModel {
     }
 
     let layoutSwitcherButtons = Box((list: Image.system(name: ""), grid: Image.system(name: "")))
+    let layoutAvailability = Box((list: false, grid: false))
     let sortButton = Box(Image.system(name: ""))
     let searchPlaceholder = Box("")
     let title = Box("")
@@ -78,13 +79,13 @@ final class SearchViewModel {
     }
 
     func didSelectBreed(at index: Int) {
-//        router.showBreedDetails(downloadedBreeds[index])
+        router.showBreedDetails(.searchBreed(currentBreeds[index], searchBreedService))
     }
 
     func willShowBreed(at index: Int) {
-        if downloadedBreeds.isEmpty == false, index == downloadedBreeds.count - 1 {
-            getNextPage()
-        }
+//        if downloadedBreeds.isEmpty == false, index == downloadedBreeds.count - 1 {
+//            getNextPage()
+//        }
     }
     
     func didSelectListLayout() {
@@ -109,14 +110,19 @@ final class SearchViewModel {
         self.query = text
         downloadedBreeds = []
         breeds.value = []
-        isLoading.value = true
         message.value = loadingMessage
+        retry.value = (tryAgainButtonTitle, false)
         guard not(text.replacingOccurrences(of: " ", with: "").isEmpty) else {
             message.value = enterSomeTextMessage
+            hideList.value = true
+            hideGrid.value = true
+            layoutAvailability.value = (false, false)
             return
         }
+        isLoading.value = true
         service.loadBreeds(query: text, page: currentPage) { [weak self] breeds in
             guard let self = self else { return }
+            self.isLoading.value = false
             if let breeds = breeds {
                 self.didGet(breeds, false)
             } else {
@@ -151,12 +157,16 @@ final class SearchViewModel {
     private func didGet(_ breeds: [SearchBreed], _ incrementPage: Bool) {
         if breeds.isEmpty {
             message.value = emptyMessage
+            hideList.value = true
+            hideGrid.value = true
+            layoutAvailability.value = (false, false)
         } else {
             currentPage += incrementPage ? 1 : 0
             message.value = ""
             downloadedBreeds = breeds
             self.breeds.value = currentBreeds.toViewModel(imageService, searchBreedService, availabledWidth: availabledWidth)
             hideList.value = false
+            layoutAvailability.value = (true, true)
         }
     }
     

@@ -9,7 +9,7 @@ import Foundation
 
 final class BreedDetailsViewModel {
     
-    private let model: Breed
+    private let model: Model
     private let imageService: ImageService
     
     let title = Box("")
@@ -20,21 +20,54 @@ final class BreedDetailsViewModel {
     let origin = Box("")
     let temperament = Box("")
     
-    init(model: Breed, imageService: ImageService) {
+    init(model: Model, imageService: ImageService) {
         self.model = model
         self.imageService = imageService
     }
     
     func bootstrap() {
         title.value = "BreedDetails.title".localized
-        name.value = model.name
-        category.value = String(format: "BreedDetails.category".localized, model.category.nonEmpty)
-        origin.value = String(format: "BreedDetails.origin".localized, model.origin.nonEmpty)
-        temperament.value = String(format: "BreedDetails.temperament".localized, model.temperament.nonEmpty)
-        imageService.downloadImage(formURL: model.image) { [weak self] data in
-            self?.isLoading.value = false
-            if let safeData = data {
-                self?.image.value = .data(data: safeData)
+        switch model {
+        case let .breed(breed):
+            name.value = breed.name
+            category.value = String(format: "BreedDetails.category".localized, breed.category.nonEmpty)
+            origin.value = String(format: "BreedDetails.origin".localized, breed.origin.nonEmpty)
+            temperament.value = String(format: "BreedDetails.temperament".localized, breed.temperament.nonEmpty)
+            imageService.downloadImage(formURL: breed.image) { [weak self] data in
+                self?.isLoading.value = false
+                if let safeData = data {
+                    self?.image.value = .data(data: safeData)
+                }
+            }
+        case let .searchBreed(breed, service):
+            name.value = breed.name
+            category.value = String(format: "BreedDetails.category".localized, breed.category.nonEmpty)
+            origin.value = String(format: "BreedDetails.origin".localized, breed.origin.nonEmpty)
+            temperament.value = String(format: "BreedDetails.temperament".localized, breed.temperament.nonEmpty)
+            guard let id = breed.imageId else {
+                isLoading.value = false
+                return
+            }
+            getImageURL(id, service)
+        }
+    }
+    
+    private func getImageURL(_ imageID: String, _ service: SearchBreedService) {
+        service.getImageURL(imageId: imageID) { [weak self] url in
+            guard let url = url else {
+                self?.isLoading.value = false
+                return
+            }
+            self?.getImage(url)
+        }
+    }
+    
+    private func getImage(_ url: URL) {
+        imageService.downloadImage(formURL: url) { [weak self] data in
+            guard let self = self else { return }
+            self.isLoading.value = false
+            if let data = data {
+                self.image.value = .data(data: data)
             }
         }
     }

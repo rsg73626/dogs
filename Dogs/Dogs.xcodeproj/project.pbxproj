@@ -27,12 +27,15 @@
 		6C181C38278BF6EB005F682A /* APIBreedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C37278BF6EB005F682A /* APIBreedImage.swift */; };
 		6C181C3A278BF79B005F682A /* SearchBreedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C39278BF79B005F682A /* SearchBreedService.swift */; };
 		6C181C3C278BF7F0005F682A /* SearchBreedServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C3B278BF7F0005F682A /* SearchBreedServiceAdapter.swift */; };
+		6C181C3E278C0397005F682A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C3D278C0397005F682A /* Model.swift */; };
+		6C181C41278C0515005F682A /* SearchBreedServiceCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C40278C0515005F682A /* SearchBreedServiceCompositor.swift */; };
+		6C181C43278C0538005F682A /* SearchBreedServiceCompletionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C181C42278C0538005F682A /* SearchBreedServiceCompletionDispatcher.swift */; };
 		6C2506AE278655FA009C21EA /* BreedsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2506AD278655FA009C21EA /* BreedsListView.swift */; };
 		6C6137AF2786583C00EA54E9 /* BreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137AE2786583C00EA54E9 /* BreedTableViewCell.swift */; };
 		6C6137B327866E8300EA54E9 /* BreedsServiceCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B227866E8300EA54E9 /* BreedsServiceCompositor.swift */; };
 		6C6137B527866EAC00EA54E9 /* BreedsServiceCompletionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B427866EAC00EA54E9 /* BreedsServiceCompletionDispatcher.swift */; };
 		6C6137B82786729000EA54E9 /* ImageServiceCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B72786729000EA54E9 /* ImageServiceCompositor.swift */; };
-		6C6137BA278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B9278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift */; };
+		6C6137BA278672C400EA54E9 /* ImageServiceCompletionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137B9278672C400EA54E9 /* ImageServiceCompletionDispatcher.swift */; };
 		6C6137BD278726FF00EA54E9 /* BreedsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137BC278726FF00EA54E9 /* BreedsGridView.swift */; };
 		6C6137BF2787284A00EA54E9 /* BreedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6137BE2787284A00EA54E9 /* BreedCollectionViewCell.swift */; };
 		6CCD7748278542A800B92D1B /* HTTPClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCD7747278542A800B92D1B /* HTTPClientError.swift */; };
@@ -104,12 +107,15 @@
 		6C181C37278BF6EB005F682A /* APIBreedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBreedImage.swift; sourceTree = "<group>"; };
 		6C181C39278BF79B005F682A /* SearchBreedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBreedService.swift; sourceTree = "<group>"; };
 		6C181C3B278BF7F0005F682A /* SearchBreedServiceAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBreedServiceAdapter.swift; sourceTree = "<group>"; };
+		6C181C3D278C0397005F682A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		6C181C40278C0515005F682A /* SearchBreedServiceCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBreedServiceCompositor.swift; sourceTree = "<group>"; };
+		6C181C42278C0538005F682A /* SearchBreedServiceCompletionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBreedServiceCompletionDispatcher.swift; sourceTree = "<group>"; };
 		6C2506AD278655FA009C21EA /* BreedsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListView.swift; sourceTree = "<group>"; };
 		6C6137AE2786583C00EA54E9 /* BreedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedTableViewCell.swift; sourceTree = "<group>"; };
 		6C6137B227866E8300EA54E9 /* BreedsServiceCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsServiceCompositor.swift; sourceTree = "<group>"; };
 		6C6137B427866EAC00EA54E9 /* BreedsServiceCompletionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsServiceCompletionDispatcher.swift; sourceTree = "<group>"; };
 		6C6137B72786729000EA54E9 /* ImageServiceCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceCompositor.swift; sourceTree = "<group>"; };
-		6C6137B9278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedServiceCompletionDispatcher.swift; sourceTree = "<group>"; };
+		6C6137B9278672C400EA54E9 /* ImageServiceCompletionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceCompletionDispatcher.swift; sourceTree = "<group>"; };
 		6C6137BC278726FF00EA54E9 /* BreedsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsGridView.swift; sourceTree = "<group>"; };
 		6C6137BE2787284A00EA54E9 /* BreedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedCollectionViewCell.swift; sourceTree = "<group>"; };
 		6CCD7747278542A800B92D1B /* HTTPClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientError.swift; sourceTree = "<group>"; };
@@ -257,12 +263,22 @@
 			path = SearchService;
 			sourceTree = "<group>";
 		};
+		6C181C3F278C0502005F682A /* SearchBreedService */ = {
+			isa = PBXGroup;
+			children = (
+				6C181C40278C0515005F682A /* SearchBreedServiceCompositor.swift */,
+				6C181C42278C0538005F682A /* SearchBreedServiceCompletionDispatcher.swift */,
+			);
+			path = SearchBreedService;
+			sourceTree = "<group>";
+		};
 		6C6137B027866E6C00EA54E9 /* Compositor */ = {
 			isa = PBXGroup;
 			children = (
+				6C181C3F278C0502005F682A /* SearchBreedService */,
 				6C181C2C278BDB69005F682A /* SearchService */,
 				6C6137B127866E7600EA54E9 /* BreedsService */,
-				6C6137B62786727D00EA54E9 /* BreedService */,
+				6C6137B62786727D00EA54E9 /* ImageService */,
 			);
 			path = Compositor;
 			sourceTree = "<group>";
@@ -276,13 +292,13 @@
 			path = BreedsService;
 			sourceTree = "<group>";
 		};
-		6C6137B62786727D00EA54E9 /* BreedService */ = {
+		6C6137B62786727D00EA54E9 /* ImageService */ = {
 			isa = PBXGroup;
 			children = (
 				6C6137B72786729000EA54E9 /* ImageServiceCompositor.swift */,
-				6C6137B9278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift */,
+				6C6137B9278672C400EA54E9 /* ImageServiceCompletionDispatcher.swift */,
 			);
-			path = BreedService;
+			path = ImageService;
 			sourceTree = "<group>";
 		};
 		6C6137BB2786891400EA54E9 /* Utils */ = {
@@ -461,6 +477,7 @@
 			children = (
 				6CEF698D2783E14500033B1C /* Breed.swift */,
 				6C181C35278BEC8D005F682A /* SearchBreed.swift */,
+				6C181C3D278C0397005F682A /* Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -675,8 +692,10 @@
 				6CCD777027857CB900B92D1B /* BreedViewModel.swift in Sources */,
 				6CEF69932783E21300033B1C /* BreedsView.swift in Sources */,
 				6C6137B82786729000EA54E9 /* ImageServiceCompositor.swift in Sources */,
+				6C181C41278C0515005F682A /* SearchBreedServiceCompositor.swift in Sources */,
 				6CEF69A52783FA0D00033B1C /* TheDogAPI.swift in Sources */,
-				6C6137BA278672C400EA54E9 /* BreedServiceCompletionDispatcher.swift in Sources */,
+				6C6137BA278672C400EA54E9 /* ImageServiceCompletionDispatcher.swift in Sources */,
+				6C181C3E278C0397005F682A /* Model.swift in Sources */,
 				6CCD777227857D9800B92D1B /* ImageService.swift in Sources */,
 				6CCD77772785817800B92D1B /* ImageServiceAdapter.swift in Sources */,
 				6C181C22278BD412005F682A /* SearchViewModel.swift in Sources */,
@@ -707,6 +726,7 @@
 				6CEF69902783E16C00033B1C /* Image.swift in Sources */,
 				6CCD776D278576C300B92D1B /* BreedView.swift in Sources */,
 				6C181C2B278BDAF4005F682A /* Map.swift in Sources */,
+				6C181C43278C0538005F682A /* SearchBreedServiceCompletionDispatcher.swift in Sources */,
 				6C181C2E278BDB76005F682A /* SearchServiceCompositor.swift in Sources */,
 				6CEF699E2783EBFC00033B1C /* BreedsService.swift in Sources */,
 			);

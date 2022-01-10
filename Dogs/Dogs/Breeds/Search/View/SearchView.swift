@@ -84,7 +84,7 @@ final class SearchView: UIViewController {
     }
     
     @objc private func didPressTryAgain() {
-        viewModel?.bootstrap()
+        viewModel?.didEnter(text: searchBar.text ?? "")
     }
     
     @objc private func didPressSort() {
@@ -96,6 +96,7 @@ final class SearchView: UIViewController {
         navigationItem.rightBarButtonItems = [sortButton]
         
         navigationItem.titleView = searchBar
+        searchBar.returnKeyType = .done
         searchBar.delegate = self
         
         view.backgroundColor = .systemBackground
@@ -139,6 +140,10 @@ final class SearchView: UIViewController {
         viewModel.layoutSwitcherButtons.bind { [weak self] list, grid in
             self?.listLayout.image = list.toUIImage()
             self?.gridLayout.image = grid.toUIImage()
+        }
+        viewModel.layoutAvailability.bind { [weak self] list, grid in
+            self?.listLayout.isEnabled = list
+            self?.gridLayout.isEnabled = grid
         }
         viewModel.sortButton.bind { [weak self] image in
             self?.sortButton.image = image.toUIImage()
@@ -202,6 +207,10 @@ extension SearchView: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     

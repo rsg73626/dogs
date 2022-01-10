@@ -10,11 +10,6 @@ import UIKit
 
 final class BreedViewModel {
     
-    enum Model {
-        case breed(_ breed: Breed)
-        case searchBreed(_ searchBreed: SearchBreed, _ service: SearchBreedService)
-    }
-    
     private let imageService: ImageService
     private let model: Model
     private let availableWidth: Float

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol BreedsWireframe {
-    func showBreedDetails(_ breed: Breed)
+    func showBreedDetails(_ model: Model)
 }

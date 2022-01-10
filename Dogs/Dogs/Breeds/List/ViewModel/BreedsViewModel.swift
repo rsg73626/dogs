@@ -31,6 +31,7 @@ final class BreedsViewModel {
     private var downloadedBreeds = [Breed]()
 
     let layoutSwitcherButtons = Box((list: Image.system(name: ""), grid: Image.system(name: "")))
+    let layoutAvailability = Box((list: false, grid: false))
     let title = Box("")
     let isLoading = Box(true)
     let isPaging = Box(false)
@@ -64,12 +65,13 @@ final class BreedsViewModel {
             } else {
                 self.message.value = self.errorMessage
                 self.retry.value = (self.tryAgainButtonTitle, true)
+                self.layoutAvailability.value = (false, false)
             }
         }
     }
 
     func didSelectBreed(at index: Int) {
-        router.showBreedDetails(downloadedBreeds[index])
+        router.showBreedDetails(.breed(downloadedBreeds[index]))
     }
 
     func willShowBreed(at index: Int) {
@@ -115,12 +117,14 @@ final class BreedsViewModel {
     private func didGet(_ breeds: [Breed]) {
         if breeds.isEmpty {
             message.value = emptyMessage
+            layoutAvailability.value = (false, false)
         } else {
             currentPage += 1
             message.value = ""
             downloadedBreeds = breeds
             self.breeds.value = downloadedBreeds.toViewModel(imageService, availabledWidth: availabledWidth)
             hideList.value = false
+            layoutAvailability.value = (true, true)
         }
     }
 

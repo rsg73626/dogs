@@ -11,8 +11,8 @@ final class BreedsRouter: BreedsWireframe {
     
     weak var view: UIViewController?
     
-    func showBreedDetails(_ breed: Breed) {
-        view?.show(BreedDetailsViewBuilder.build(breed: breed), sender: view)
+    func showBreedDetails(_ model: Model) {
+        view?.show(BreedDetailsViewBuilder.build(model: model), sender: view)
     }
     
 }
